@@ -58,9 +58,11 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
+        new Game();
         SwingUtilities.invokeLater(() -> {
             MainFrame mainFrame = new MainFrame();
             mainFrame.setVisible(true);
+            
         });
     }
 }
