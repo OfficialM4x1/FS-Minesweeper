@@ -1,7 +1,3 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,8 +6,9 @@ import java.awt.event.ActionListener;
 public class MainFrame extends JFrame implements ActionListener {
     private CardLayout cardLayout;
     private JPanel cardPanel;
-    private JButton nextPageButton;
-    private JButton previousPageButton;
+    private JButton easyButton;
+    private JButton mediumButton;
+    private JButton hardButton;
 
     public MainFrame() {
         setTitle("MINESWEEPER");
@@ -23,6 +20,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         //One Panel is a site for the different gamemodes
         JPanel menu = new JPanel();
+        menu.setLayout(new BoxLayout(menu, BoxLayout.Y_AXIS));
         menu.add(new JLabel("MENU"));
         JPanel easy = new JPanel();
         easy.add(new JLabel("CLASSIC EASY"));
@@ -37,26 +35,36 @@ public class MainFrame extends JFrame implements ActionListener {
         cardPanel.add(hard, "CLASSIC HARD");
 
         // Buttons to select the gamemode
-        nextPageButton = new JButton("Nächste Seite");
-        nextPageButton.addActionListener(this);
-        previousPageButton = new JButton("Vorherige Seite");
-        previousPageButton.addActionListener(this);
+        easyButton = new JButton("CLASSIC EASY");
+        mediumButton = new JButton("CLASSIC MEDIUM");
+        hardButton = new JButton("CLASSIC HARD");
+        easyButton.addActionListener(this);
+        mediumButton.addActionListener(this);
+        hardButton.addActionListener(this);
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(previousPageButton);
-        buttonPanel.add(nextPageButton);
+        cardPanel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.
 
-        // Füge Panels zum Hauptframe hinzu
-        getContentPane().add(cardPanel, BorderLayout.CENTER);
-        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+        menu.add(easyButton, c);
+        menu.add(mediumButton, c);
+        menu.add(hardButton, c);
+
+        // Display Buttons in the Main panel
+        getContentPane().add(cardPanel, BorderLayout.PAGE_START);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == nextPageButton) {
+        if (e.getSource() == easyButton) {
             cardLayout.next(cardPanel);
-        } else if (e.getSource() == previousPageButton) {
-            cardLayout.previous(cardPanel);
+        } else if (e.getSource() == mediumButton) {
+            cardLayout.next(cardPanel);
+            cardLayout.next(cardPanel);
+        } else if (e.getSource() == hardButton) {
+            cardLayout.next(cardPanel);
+            cardLayout.next(cardPanel);
+            cardLayout.next(cardPanel);
         }
     }
 
