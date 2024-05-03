@@ -32,7 +32,7 @@ class Board extends JPanel {
 
         //loops though the rows 
         for (int i = 0; i < rows; i++) {
-            //loops through the hole column before going to the next row
+            //loops through the whole column before going to the next row
             for (int j = 0; j < cols; j++) {
                 final int row = i;
                 final int col = j;
