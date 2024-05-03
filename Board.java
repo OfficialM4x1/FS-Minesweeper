@@ -79,6 +79,17 @@ class Board extends JPanel {
         } else {
             //count distance to mine
             int adjacentMines = countAdjacentMines(row, col);
+            //incase the field does not border any mine the fiels around it are openend              
+            if (countAdjacentMines(row, col)== 0) {
+                revealCell(row -1, col);
+                revealCell(row -1, col + 1);
+                revealCell(row -1, col -1 );
+                revealCell(row , col +1);
+                revealCell(row -1, col-1);
+                revealCell(row +1, col);
+                revealCell(row +1, col-1);
+                revealCell(row +1, col+1);
+            }
             buttons[row][col].setText(Integer.toString(adjacentMines));
             //colour 
             colourSquare(row, col, true);
