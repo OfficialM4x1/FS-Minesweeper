@@ -67,9 +67,11 @@ class Board extends JPanel {
     }
 
     private void revealCell(int row, int col) {
-        if (isRevealed[row][col]) return; // Already revealed
+        //check if field is already clicked
+        if (isRevealed[row][col]) return; 
+
+        //set field clicked to true
         isRevealed[row][col] = true;
-        colourSquare(row, col, true);
         
         //check if clicked field is a mine 
         if (isMine[row][col]) {
@@ -77,25 +79,32 @@ class Board extends JPanel {
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
             revealAllMines();
         } else {
-            //count distance to mine
+            //get number of bodering mines 
             int adjacentMines = countAdjacentMines(row, col);
+
+            //change colour to clicked field colour 
+            colourSquare(row, col, true);
+
             //incase the field does not border any mine the fiels around it are openend              
             if (countAdjacentMines(row, col)== 0) {
-                revealCell(row -1, col);
-                revealCell(row -1, col + 1);
-                revealCell(row -1, col -1 );
-                revealCell(row , col +1);
-                revealCell(row -1, col-1);
-                revealCell(row +1, col);
-                revealCell(row +1, col-1);
-                revealCell(row +1, col+1);
+                for (int i = -1; i <=1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        if (isRevealed[row + i][col + j]) {
+                            continue;
+                        }
+                        else {
+                            revealCell(row + i, col + j);
+                        }
+                    } 
+                }
             }
-            buttons[row][col].setText(Integer.toString(adjacentMines));
-            //colour 
-            colourSquare(row, col, true);
- 
+            else {
+                //set Text of Distance 
+                buttons[row][col].setText(Integer.toString(adjacentMines));
+            }
         }
     }
+
     // check how many mines are around a field 
     private int countAdjacentMines(int row, int col) {
         int count = 0;
