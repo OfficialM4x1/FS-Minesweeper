@@ -13,6 +13,7 @@ class Board extends JPanel {
     private JButton[][] buttons;
     private boolean[][] isMine;
     private boolean[][] isRevealed;
+    private boolean[][] isFlaged;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
@@ -27,6 +28,7 @@ class Board extends JPanel {
         buttons = new JButton[rows][cols];
         isMine = new boolean[rows][cols];
         isRevealed = new boolean[rows][cols];
+        isFlaged = new boolean[rows][cols];
 
         placeMines();
 
@@ -42,10 +44,23 @@ class Board extends JPanel {
                 //make chess patern as gameboard
                 colourSquare(i, j, false);
 
-                buttons[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        revealCell(row, col);
-                    }
+                buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
+                    public void mouseClicked(MouseEvent e) {
+                        if (SwingUtilities.isLeftMouseButton(e)) {
+                            revealCell(row, col);
+                        }
+                        //ability to flag mines with aright click and deflag 
+                        else if (SwingUtilities.isRightMouseButton(e)) {
+                            if (isFlaged[row][col] == true) {
+                                colourSquare(row, col, isRevealed[row][col]);
+                                isFlaged[row][col] = false;
+                            }
+                            else {
+                                buttons[row][col].setBackground(Color.MAGENTA);
+                                isFlaged[row][col] = true;
+                            }
+                        }
+                    } 
                 });
                 add(buttons[i][j]);
             }
