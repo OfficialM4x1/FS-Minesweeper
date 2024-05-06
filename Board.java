@@ -89,11 +89,12 @@ class Board extends JPanel {
             if (countAdjacentMines(row, col)== 0) {
                 for (int i = -1; i <=1; i++) {
                     for (int j = -1; j <= 1; j++) {
-                        if (isRevealed[row + i][col + j]) {
-                            continue;
-                        }
-                        else {
+                        //Implement catch method in case the field is not on the board and java throws a java.lang.ArrayIndexOutOfBoundsException 
+                        try {
                             revealCell(row + i, col + j);
+                        }
+                        catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                            continue;
                         }
                     } 
                 }
