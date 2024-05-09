@@ -12,7 +12,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
     public MainFrame() {
         setTitle("MINESWEEPER");
-        setSize(800, 800);
+        setSize(700, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         cardLayout = new CardLayout();

@@ -9,6 +9,8 @@ class Board extends JPanel {
     private int rows;
     private int cols;
     private int mines;
+    
+    private boolean GameOver = false;
 
     private JButton[][] buttons;
     private boolean[][] isMine;
@@ -92,6 +94,8 @@ class Board extends JPanel {
         if (isMine[row][col]) {
             buttons[row][col].setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
+            GameOver = true;
+
             revealAllMines();
         } else {
             //get number of bodering mines 
@@ -146,6 +150,12 @@ class Board extends JPanel {
             }
         }
     }
+
+    //get Method for GameOver
+    private boolean getGameOver() {
+        return this.GameOver;
+    }
+    
     //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
     private void colourSquare(int i, int j, boolean revealed) {
         if (i % 2 == 0) {
