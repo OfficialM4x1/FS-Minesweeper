@@ -13,6 +13,7 @@ class Board extends JPanel {
     private JButton[][] buttons;
     private boolean[][] isMine;
     private boolean[][] isRevealed;
+    private boolean[][] isFlaged;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
@@ -27,6 +28,7 @@ class Board extends JPanel {
         buttons = new JButton[rows][cols];
         isMine = new boolean[rows][cols];
         isRevealed = new boolean[rows][cols];
+        isFlaged = new boolean[rows][cols];
 
         placeMines();
 
@@ -42,10 +44,23 @@ class Board extends JPanel {
                 //make chess patern as gameboard
                 colourSquare(i, j, false);
 
-                buttons[i][j].addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        revealCell(row, col);
-                    }
+                buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
+                    public void mouseClicked(MouseEvent e) {
+                        if (SwingUtilities.isLeftMouseButton(e)) {
+                            revealCell(row, col);
+                        }
+                        //ability to flag mines with aright click and deflag 
+                        else if (SwingUtilities.isRightMouseButton(e)) {
+                            if (isFlaged[row][col] == true) {
+                                colourSquare(row, col, isRevealed[row][col]);
+                                isFlaged[row][col] = false;
+                            }
+                            else {
+                                buttons[row][col].setBackground(Color.MAGENTA);
+                                isFlaged[row][col] = true;
+                            }
+                        }
+                    } 
                 });
                 add(buttons[i][j]);
             }
@@ -67,9 +82,11 @@ class Board extends JPanel {
     }
 
     private void revealCell(int row, int col) {
-        if (isRevealed[row][col]) return; // Already revealed
+        //check if field is already clicked
+        if (isRevealed[row][col]) return; 
+
+        //set field clicked to true
         isRevealed[row][col] = true;
-        colourSquare(row, col, true);
         
         //check if clicked field is a mine 
         if (isMine[row][col]) {
@@ -77,25 +94,33 @@ class Board extends JPanel {
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
             revealAllMines();
         } else {
-            //count distance to mine
+            //get number of bodering mines 
             int adjacentMines = countAdjacentMines(row, col);
+
+            //change colour to clicked field colour 
+            colourSquare(row, col, true);
+
             //incase the field does not border any mine the fiels around it are openend              
             if (countAdjacentMines(row, col)== 0) {
-                revealCell(row -1, col);
-                revealCell(row -1, col + 1);
-                revealCell(row -1, col -1 );
-                revealCell(row , col +1);
-                revealCell(row -1, col-1);
-                revealCell(row +1, col);
-                revealCell(row +1, col-1);
-                revealCell(row +1, col+1);
+                for (int i = -1; i <=1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        //Implement catch method in case the field is not on the board and java throws a java.lang.ArrayIndexOutOfBoundsException 
+                        try {
+                            revealCell(row + i, col + j);
+                        }
+                        catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                            continue;
+                        }
+                    } 
+                }
             }
-            buttons[row][col].setText(Integer.toString(adjacentMines));
-            //colour 
-            colourSquare(row, col, true);
- 
+            else {
+                //set Text of Distance 
+                buttons[row][col].setText(Integer.toString(adjacentMines));
+            }
         }
     }
+
     // check how many mines are around a field 
     private int countAdjacentMines(int row, int col) {
         int count = 0;
