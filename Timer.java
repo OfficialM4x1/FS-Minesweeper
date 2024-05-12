@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//aus Chat importiert 
+//aus Chat import
 public class Timer extends JPanel {
     private JLabel timerLabel;
     private javax.swing.Timer timer;

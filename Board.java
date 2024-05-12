@@ -16,6 +16,8 @@ class Board extends JPanel {
     private boolean[][] isMine;
     private boolean[][] isRevealed;
     private boolean[][] isFlaged;
+    private JPanel topBoardPanel;
+    private JPanel bottomBoardPanel;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
@@ -24,15 +26,34 @@ class Board extends JPanel {
         this.cols = cols;
         this.mines = mines;
         
+        //InfoPanel for Game with Timer Username etc
+        topBoardPanel = new JPanel();
+        topBoardPanel.setPreferredSize(new Dimension(700, 40)); 
+        topBoardPanel.setBackground(Color.GREEN);
+        JLabel usernamLabel = new JLabel("User: Salis14"); // hier noch einen Funktion einbauen die den User 
+        topBoardPanel.add(usernamLabel);
+        Timer timer = new Timer();
+        timer.setBackground(Color.GREEN);
+        topBoardPanel.add(timer);
+
+        add(topBoardPanel, BorderLayout.NORTH);
+
         //Layout for gameboard
-        setLayout(new GridLayout(rows, cols));
+        bottomBoardPanel = new JPanel();
+        bottomBoardPanel.setPreferredSize(new Dimension(700, 700)); 
+        add(bottomBoardPanel, BorderLayout.SOUTH);
+
+            
+        bottomBoardPanel.setLayout(new GridLayout(rows, cols));
 
         buttons = new JButton[rows][cols];
         isMine = new boolean[rows][cols];
         isRevealed = new boolean[rows][cols];
         isFlaged = new boolean[rows][cols];
 
+
         placeMines();
+        timer.startTimer();
 
         //loops though the rows 
         for (int i = 0; i < rows; i++) {
@@ -64,7 +85,7 @@ class Board extends JPanel {
                         }
                     } 
                 });
-                add(buttons[i][j]);
+                bottomBoardPanel.add(buttons[i][j]);
             }
         }
     
@@ -95,8 +116,10 @@ class Board extends JPanel {
             buttons[row][col].setBackground(Color.red);
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
             GameOver = true;
+            //timer.stopTimer();
 
             revealAllMines();
+            
         } else {
             //get number of bodering mines 
             int adjacentMines = countAdjacentMines(row, col);
@@ -152,10 +175,10 @@ class Board extends JPanel {
     }
 
     //get Method for GameOver
-    private boolean getGameOver() {
+    public boolean getGameOver() {
         return this.GameOver;
     }
-    
+
     //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
     private void colourSquare(int i, int j, boolean revealed) {
         if (i % 2 == 0) {
