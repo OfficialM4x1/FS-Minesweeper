@@ -13,7 +13,7 @@ class Board extends JPanel {
     private boolean GameOver = false;
 
     private JButton[][] buttons;
-    private boolean[][] isMine;
+    boolean[][] isMine;
     private boolean[][] isRevealed;
     private boolean[][] isFlaged;
     private JPanel topBoardPanel;
@@ -40,11 +40,12 @@ class Board extends JPanel {
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
         topBoardPanel.setPreferredSize(new Dimension(700, 40)); 
-        topBoardPanel.setBackground(Color.GREEN);
+        topBoardPanel.setBackground(Color.WHITE);
         JLabel usernamLabel = new JLabel("User: Salis14"); // hier noch einen Funktion einbauen die den User 
         topBoardPanel.add(usernamLabel);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        timer.setBackground(Color.GREEN);
+        timer.setBackground(Color.WHITE);
         topBoardPanel.add(timer);
 
         add(topBoardPanel, BorderLayout.NORTH);
@@ -82,9 +83,17 @@ class Board extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             revealCell(row, col);
+                            if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                timer.stopTimer();
+                            }
                         }
                         //ability to flag mines with aright click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
+                            if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                timer.stopTimer();
+                            }
                             //unflag field 
                             if (isFlaged[row][col] == true) {
                                 colourSquare(row, col, isRevealed[row][col]);
@@ -106,6 +115,38 @@ class Board extends JPanel {
     
     }
 
+    public boolean checkmine(int row, int col) {
+        return isMine[row][col];
+    }
+
+    public boolean checkrevealed(int row, int col) {
+        return isRevealed[row][col];
+    }
+
+    public boolean solved(int row, int col) {
+        int counter = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (isRevealed[i][j]) {
+                    counter++;
+                }
+            }
+        }
+        return mines == row*col-counter;
+    }
+
+    public boolean solvedmines(int row, int col) {
+        int counter = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (isFlaged[i][j] && isMine[i][j]) {
+                    counter++;
+                }
+            }
+        }
+        return mines - 1 == counter;
+    }
+
     private void placeMines() {
         //Place mines randomly
         int minesPlaced = 0;
@@ -119,7 +160,7 @@ class Board extends JPanel {
         }
     }
 
-    private void revealCell(int row, int col) {
+    public void revealCell(int row, int col) {
         buttons[row][col].setBackground(Color.LIGHT_GRAY);
         //check if field is already clicked
         if (isRevealed[row][col]) return; 
