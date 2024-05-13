@@ -84,9 +84,12 @@ class Board extends JPanel {
                         }
                         //ability to flag mines with aright click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
+                            //unflag field 
                             if (isFlaged[row][col] == true) {
                                 colourSquare(row, col, isRevealed[row][col]);
                                 isFlaged[row][col] = false;
+                                buttons[row][col].setIcon(null);
+                                buttons[row][col].setBackground(Color.DARK_GRAY);
                             }
                             else {
                                 buttons[row][col].setBackground(Color.LIGHT_GRAY);
