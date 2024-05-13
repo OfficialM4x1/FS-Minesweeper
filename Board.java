@@ -28,6 +28,7 @@ class Board extends JPanel {
     ImageIcon sixicon = new ImageIcon("icon6.png");
     ImageIcon sevenicon = new ImageIcon("icon7.png");
     ImageIcon eighticon = new ImageIcon("icon8.png");
+    Timer timer = new Timer();
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
@@ -42,7 +43,7 @@ class Board extends JPanel {
         topBoardPanel.setBackground(Color.GREEN);
         JLabel usernamLabel = new JLabel("User: Salis14"); // hier noch einen Funktion einbauen die den User 
         topBoardPanel.add(usernamLabel);
-        Timer timer = new Timer();
+        
         timer.setBackground(Color.GREEN);
         topBoardPanel.add(timer);
 
@@ -132,7 +133,7 @@ class Board extends JPanel {
             buttons[row][col].setIcon(mineicon);
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
             GameOver = true;
-            //timer.stopTimer();
+            timer.stopTimer();
 
             revealAllMines();
             
@@ -224,6 +225,8 @@ class Board extends JPanel {
     public boolean getGameOver() {
         return this.GameOver;
     }
+
+    //winning function
 
     //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
     private void colourSquare(int i, int j, boolean revealed) {
