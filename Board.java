@@ -29,6 +29,8 @@ class Board extends JPanel {
     ImageIcon sevenicon = new ImageIcon("icon7.png");
     ImageIcon eighticon = new ImageIcon("icon8.png");
     Timer timer = new Timer();
+    String username;
+    JLabel usernamLabel;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
@@ -41,7 +43,7 @@ class Board extends JPanel {
         topBoardPanel = new JPanel();
         topBoardPanel.setPreferredSize(new Dimension(700, 40)); 
         topBoardPanel.setBackground(Color.WHITE);
-        JLabel usernamLabel = new JLabel("User: Salis14"); // hier noch einen Funktion einbauen die den User 
+        usernamLabel = new JLabel(username);
         topBoardPanel.add(usernamLabel);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
@@ -121,6 +123,10 @@ class Board extends JPanel {
 
     public boolean checkrevealed(int row, int col) {
         return isRevealed[row][col];
+    }
+
+    public void setusername(String username) {
+        usernamLabel.setText(username);
     }
 
     public boolean solved(int row, int col) {

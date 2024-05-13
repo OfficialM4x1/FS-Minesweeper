@@ -5,17 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
-    private final int ROWS = 18;
-    private final int COLS = 18;
-    private final int MINES = 35;
+    private int ROWS = 18;
+    private int COLS = 18;
+    private int MINES = 35;
     ImageIcon menuicon = new ImageIcon("menu.png");
     ImageIcon hinticon = new ImageIcon("hint.png");
     ImageIcon tutorialicon = new ImageIcon("tutorial.png");
 
     private Board board;
 
-    public Game() {
+    public Game(int ROWS, int COLS, int MINES) {
+        this.ROWS = ROWS;
+        this.COLS = COLS;
+        this.MINES = MINES;
         //here you can adjust the frame how you like 
+        String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
         setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -32,17 +36,19 @@ public class Game extends JFrame {
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
         board = new Board(ROWS, COLS, MINES);
+        board.setusername(nameinput);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
 
         // panels around the gameboard 
         JPanel leftPanel = new JPanel();
-        leftPanel.setBackground(Color.WHITE); //Farbe gerne anpasses !!!
+        leftPanel.setBackground(Color.WHITE); 
         leftPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(leftPanel, BorderLayout.WEST);
 
+
         JPanel rightPanel = new JPanel();
-        rightPanel.setBackground(Color.WHITE); //Farbe gerne anpasses !!!
+        rightPanel.setBackground(Color.WHITE);
         rightPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(rightPanel, BorderLayout.EAST);
         GridLayout c = new GridLayout(0,1);
