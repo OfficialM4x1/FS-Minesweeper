@@ -11,6 +11,8 @@ class Board extends JPanel {
     private int mines;
     private int len;
     private boolean test;
+    private boolean test1;
+
 
     private JButton[][] buttons;
     private boolean[][] isMine;
