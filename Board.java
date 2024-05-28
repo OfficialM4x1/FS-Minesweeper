@@ -1,7 +1,7 @@
 //@author class Silas Abler
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 
 class Board extends JPanel {
     
@@ -9,6 +9,7 @@ class Board extends JPanel {
     private int rows;
     private int cols;
     private int mines;
+    public int amogus;
 
     private JButton[][] buttons;
     private boolean[][] isMine;
