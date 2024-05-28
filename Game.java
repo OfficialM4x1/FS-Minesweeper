@@ -1,18 +1,40 @@
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
-    private final int ROWS = 17;
-    private final int COLS = 17;
-    private final int MINES = 40;
+    private int ROWS = 18;
+    private int COLS = 18;
+    private int MINES = 35;
+    ImageIcon menuicon = new ImageIcon("menu.png");
+    ImageIcon hinticon = new ImageIcon("hint.png");
+    ImageIcon tutorialicon = new ImageIcon("tutorial.png");
 
     private Board board;
 
-    public Game() {
+    public Game(int ROWS, int COLS, int MINES) {
+        this.ROWS = ROWS;
+        this.COLS = COLS;
+        this.MINES = MINES;
+        //here you can adjust the frame how you like 
+        String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
         setTitle("Minesweeper");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(680, 680);
-        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null); 
+        //change little icon of window 
+        ImageIcon image = new ImageIcon("PanzerMine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
+        setIconImage(image.getImage());
 
+    
+        JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+
+        
+        JPanel gamePanel = new JPanel();
+        gamePanel.setLayout(new BorderLayout()); 
         board = new Board(ROWS, COLS, MINES);
         board.setusername(nameinput);
         gamePanel.add(board, BorderLayout.CENTER);
