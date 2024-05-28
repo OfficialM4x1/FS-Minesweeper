@@ -53,8 +53,12 @@ public class MainFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == easyButton) {
-            Game mygame = new Game();
-        } 
+            Game mygame = new Game(18, 18, 35);
+        } else if (e.getSource() == mediumButton) {
+            Game mygame2 = new Game(25, 25, 90);
+        } else if (e.getSource() == hardButton) {
+            Game mygame3 = new Game(32, 32, 150);
+        }
     }
 
     public static void main(String[] args) {
