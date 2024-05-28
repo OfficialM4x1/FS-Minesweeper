@@ -9,6 +9,7 @@ class Board extends JPanel {
     private int rows;
     private int cols;
     private int mines;
+    public int amogus;
 
     private JButton[][] buttons;
     boolean[][] isMine;
