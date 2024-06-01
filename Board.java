@@ -17,6 +17,7 @@ class Board extends JPanel {
     private boolean[][] isFlaged;
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
+    private JPanel bottomPanel;
     ImageIcon mineicon = new ImageIcon("mine.png");
     ImageIcon flaggeicon = new ImageIcon("flagge.png");
     ImageIcon oneicon = new ImageIcon("icon1.png");
@@ -40,7 +41,7 @@ class Board extends JPanel {
         
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
-        topBoardPanel.setPreferredSize(new Dimension(700, 40)); 
+        topBoardPanel.setPreferredSize(new Dimension(600, 30)); 
         topBoardPanel.setBackground(Color.WHITE);
         usernamLabel = new JLabel(username);
         topBoardPanel.add(usernamLabel);
@@ -48,13 +49,18 @@ class Board extends JPanel {
         
         timer.setBackground(Color.WHITE);
         topBoardPanel.add(timer);
-
         add(topBoardPanel, BorderLayout.NORTH);
 
         //Layout for gameboard
         bottomBoardPanel = new JPanel();
         bottomBoardPanel.setPreferredSize(new Dimension(700, 700)); 
-        add(bottomBoardPanel, BorderLayout.SOUTH);
+        add(bottomBoardPanel, BorderLayout.CENTER);
+
+        //bottom panel tto have some space between the edge of the screen and the game
+        bottomPanel = new JPanel();
+        bottomPanel.setPreferredSize(new Dimension(700, 10)); 
+        bottomPanel.setBackground(Color.WHITE);
+        add(bottomPanel, BorderLayout.SOUTH);
 
             
         bottomBoardPanel.setLayout(new GridLayout(rows, cols));
