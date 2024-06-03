@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game extends JFrame {
+public class CompGame extends JFrame {
     private int ROWS = 18;
     private int COLS = 18;
     private int MINES = 35;
@@ -12,15 +12,14 @@ public class Game extends JFrame {
     ImageIcon hinticon = new ImageIcon("hint.png");
     ImageIcon tutorialicon = new ImageIcon("tutorial.png");
 
-    private Board board;
+    private CompBoard board;
 
-    public Game(int ROWS, int COLS, int MINES) {
+    public CompGame(int ROWS, int COLS, int MINES) {
         this.ROWS = ROWS;
         this.COLS = COLS;
         this.MINES = MINES;
         //here you can adjust the frame how you like 
-        String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
-        setTitle("Minesweeper");
+        setTitle("Minesweeper COMPETITIVE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null); 
@@ -28,15 +27,20 @@ public class Game extends JFrame {
         ImageIcon image = new ImageIcon("mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
         setIconImage(image.getImage());
 
-    
+        //player names
+        String nameinput1 = JOptionPane.showInputDialog(board, "Player 1, please enter your name:"); //user 1
+        String nameinput2 = JOptionPane.showInputDialog(board, "Player 2, please enter your name:"); //user 2
+        
+        //lowest panel where all the other panels sit on
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
         
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
-        board = new Board(ROWS, COLS, MINES);
-        board.setusername(nameinput);
+        board = new CompBoard(ROWS, COLS, MINES);
+        board.setusername1(nameinput1); //add usernames
+        board.setusername2(nameinput2);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
 
