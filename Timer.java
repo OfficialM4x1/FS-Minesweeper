@@ -2,21 +2,36 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//aus Chat import
+//basic structure from chat gpt, adjustments for competitive mode handmade
 public class Timer extends JPanel {
     private JLabel timerLabel;
     private javax.swing.Timer timer;
     private int secondsPassed;
 
-    public Timer() {
-        timerLabel = new JLabel("00:00");
+    public Timer(int mode) {
+        if (mode==0) {
+            timerLabel = new JLabel("00:00");
+        }
+        else if(mode==1) {
+            timerLabel = new JLabel("01:00");
+            secondsPassed = 60;
+        }   
         add(timerLabel);
 
         // Timer für das Aktualisieren des Timer-Labels erstellen
         timer = new javax.swing.Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                secondsPassed++;
+                if (mode==0) {
+                    secondsPassed++; //normal mode timer just stops the time how long the user needed to solve the field 
+                }
+                else if (mode ==1) { //when competitive mode the timer counts dow because the player only has a limited amount of time 
+                    secondsPassed--;
+                }
+                else {
+                    System.out.println("Not a valid gamemode");
+                }
+                
                 updateTimerLabel();
             }
         });

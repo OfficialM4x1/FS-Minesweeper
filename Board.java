@@ -28,16 +28,24 @@ class Board extends JPanel {
     ImageIcon sixicon = new ImageIcon("icon6.png");
     ImageIcon sevenicon = new ImageIcon("icon7.png");
     ImageIcon eighticon = new ImageIcon("icon8.png");
-    Timer timer = new Timer();
+    Timer timer;
     String username;
     JLabel usernamLabel;
+    //username and timer for competitve mode 
+    int mode;
+    String username2 = "Silas"; //wie bekommme ich hier eine zweite MessageBox für den 2. user name 
+    JLabel usernamLabel2;
+    Timer timer2;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
-    public Board(int rows, int cols, int mines) {
+    public Board(int rows, int cols, int mines, int mode) {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
+        this.mode = mode;
+        this.timer = new Timer(mode);
+        this.timer2 = new Timer(mode);
         
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
@@ -45,10 +53,16 @@ class Board extends JPanel {
         topBoardPanel.setBackground(Color.WHITE);
         usernamLabel = new JLabel(username);
         topBoardPanel.add(usernamLabel);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
-        timer.setBackground(Color.WHITE);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));  
+        timer.setBackground(Color.RED);
         topBoardPanel.add(timer);
+        if (mode==1) {
+            usernamLabel2 = new JLabel(username2);
+            topBoardPanel.add(usernamLabel2);
+            timer2.setBackground(Color.BLUE);
+            topBoardPanel.add(timer2);
+        }
+   
         add(topBoardPanel, BorderLayout.NORTH);
 
         //Layout for gameboard
