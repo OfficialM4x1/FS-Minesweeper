@@ -118,20 +118,24 @@ class CompBoard extends JPanel {
 
                 buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
                     public void mouseClicked(MouseEvent e) {
-                        //switch between player and start and stop the timer, could add some logic to that like in chess
-                        if (currentPlayer == 1) {
-                            timer1.stopTimer();
-                            timer2.startTimer();
-                            currentPlayer = 2;
-                        }
-                        else{
-                            timer2.stopTimer();
-                            timer1.startTimer();
-                            currentPlayer = 1;
-                        }
 
                         if (SwingUtilities.isLeftMouseButton(e)) {
+                            //switch between player and start and stop the timer, could add some logic to that like in chess
+                            if (!isRevealed[row][col]) {
+                                if (currentPlayer == 1) {
+                                    timer1.stopTimer();
+                                    timer2.startTimer();
+                                    currentPlayer = 2;
+                                }
+                                else {
+                                    timer2.stopTimer();
+                                    timer1.startTimer();
+                                    currentPlayer = 1;
+                                }
+                            }
+                            //Normal revealing of cell
                             revealCell(row, col);
+                            
                             if (solved(rows, cols) && solvedmines(rows, cols)) {
                                 JOptionPane.showMessageDialog(CompBoard.this, "You won the game!");
                                 //timer.stopTimer();
