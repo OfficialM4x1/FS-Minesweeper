@@ -10,7 +10,7 @@ class CompBoard extends JPanel {
     private int rows;
     private int cols;
     private int mines;
-    private boolean GameOver;
+    private boolean gameOver;
 
     private JButton[][] buttons;
     boolean[][] isMine;
@@ -35,21 +35,24 @@ class CompBoard extends JPanel {
 
 
     //Player 1 stuff
-    Timer timer1 = new Timer();
     String username1;
     JLabel usernamLabel1;
+    Timer timer1;
 
     //Player 2 stuff
-    Timer timer2 = new Timer();
     String username2;
     JLabel usernamLabel2;
+    Timer timer2;
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
-    public CompBoard(int rows, int cols, int mines) {
+    public CompBoard(int rows, int cols, int mines, String username1, String username2) {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
+        this.username1 = username1;
+        this.username2 = username2;
+        this.gameOver = false;
         
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
@@ -58,6 +61,8 @@ class CompBoard extends JPanel {
 
         //player 1
         usernamLabel1 = new JLabel(username1); //Player 1 username
+        System.out.println(username1);
+        this.timer1 = new Timer(username1);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
         timer1.setTimer(60);
@@ -65,9 +70,10 @@ class CompBoard extends JPanel {
 
         //player 2
         usernamLabel2 = new JLabel(username2);
+        this.timer2 = new Timer(username2);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(60);
+        timer2.setTimer(10);
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -118,46 +124,54 @@ class CompBoard extends JPanel {
 
                 buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
                     public void mouseClicked(MouseEvent e) {
+                        
 
                         if (SwingUtilities.isLeftMouseButton(e)) {
-                            //switch between player and start and stop the timer, could add some logic to that like in chess
-                            if (!isRevealed[row][col]) {
-                                if (currentPlayer == 1) {
+                            if (!gameOver) {
+                                //switch between player and start and stop the timer, could add some logic to that like in chess
+                                if (!isRevealed[row][col]) {
+                                    if (currentPlayer == 1) {
+                                        timer1.stopTimer();
+                                        timer2.startTimer();
+                                        currentPlayer = 2;
+                                    }
+                                    else {
+                                        timer2.stopTimer();
+                                        timer1.startTimer();
+                                        currentPlayer = 1;
+                                    }
+                                }
+                                //Normal revealing of cell
+                                revealCell(row, col);
+                                if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                    JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();
-                                    timer2.startTimer();
-                                    currentPlayer = 2;
-                                }
-                                else {
                                     timer2.stopTimer();
-                                    timer1.startTimer();
-                                    currentPlayer = 1;
+                                    gameOver = true;
                                 }
-                            }
-                            //Normal revealing of cell
-                            revealCell(row, col);
-                            
-                            if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                JOptionPane.showMessageDialog(CompBoard.this, "You won the game!");
-                                //timer.stopTimer();
                             }
                         }
                         //ability to flag mines with aright click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
-                            if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                JOptionPane.showMessageDialog(CompBoard.this, "You won the game!");
-                                //timer.stopTimer();
-                            }
-                            //unflag field 
-                            if (isFlaged[row][col] == true) {
-                                colourSquare(row, col, isRevealed[row][col]);
-                                isFlaged[row][col] = false;
-                                buttons[row][col].setIcon(null);
-                                buttons[row][col].setBackground(Color.DARK_GRAY);
-                            }
-                            else {
-                                buttons[row][col].setBackground(Color.LIGHT_GRAY);
-                                buttons[row][col].setIcon(flaggeicon);
-                                isFlaged[row][col] = true;
+                            if (!gameOver) {
+                                if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                    JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
+                                    timer1.stopTimer();
+                                    timer2.stopTimer();
+                                    gameOver = true;
+                                }
+                                //unflag field 
+                                if (isFlaged[row][col] == true) {
+                                    colourSquare(row, col, isRevealed[row][col]);
+                                    isFlaged[row][col] = false;
+                                    buttons[row][col].setIcon(null);
+                                    buttons[row][col].setBackground(Color.DARK_GRAY);
+                                }
+                                else {
+                                    buttons[row][col].setBackground(Color.LIGHT_GRAY);
+                                    buttons[row][col].setIcon(flaggeicon);
+                                    isFlaged[row][col] = true;
+                                }
                             }
                         }
                     } 
@@ -166,6 +180,20 @@ class CompBoard extends JPanel {
             }
         }
     
+    }
+    public int getCurrentPlayer() {
+        return this.currentPlayer;
+    }
+    public String getPlayerWhoLost() {
+        String s;
+        if (currentPlayer == 1) {
+            s = username1;
+
+        }
+        else {
+            s = username2;
+        }
+        return s;
     }
 
     public boolean checkmine(int row, int col) {
@@ -178,10 +206,12 @@ class CompBoard extends JPanel {
 
     public void setusername1(String username) {
         usernamLabel1.setText(username);
+        this.username1 = username;
     }
 
     public void setusername2(String username) {
         usernamLabel2.setText(username);
+        this.username2 = username;
     }
 
     public boolean solved(int row, int col) {
@@ -234,8 +264,9 @@ class CompBoard extends JPanel {
             buttons[row][col].setBackground(Color.LIGHT_GRAY);
             buttons[row][col].setIcon(mineicon);
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
-            GameOver = true;
-            //timer.stopTimer();
+            gameOver = true;
+            timer1.stopTimer();
+            timer2.stopTimer();
 
             revealAllMines();
             
@@ -325,7 +356,7 @@ class CompBoard extends JPanel {
 
     //get Method for GameOver
     public boolean getGameOver() {
-        return this.GameOver;
+        return this.gameOver;
     }
 
     //winning function

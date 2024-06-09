@@ -28,9 +28,10 @@ class Board extends JPanel {
     ImageIcon sixicon = new ImageIcon("icon6.png");
     ImageIcon sevenicon = new ImageIcon("icon7.png");
     ImageIcon eighticon = new ImageIcon("icon8.png");
-    Timer timer = new Timer();
+    
     String username;
     JLabel usernamLabel;
+    Timer timer = new Timer(username);
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty

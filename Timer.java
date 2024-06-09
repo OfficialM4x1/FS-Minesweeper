@@ -8,26 +8,41 @@ public class Timer extends JPanel {
     private javax.swing.Timer timer;
     private int secondsPassed;
     private boolean comp;
+    private boolean timerActive;
 
-    public Timer() {
+    public Timer(String username) {
         timerLabel = new JLabel("00:00");
         add(timerLabel);
+        timerActive = true;
 
         // Timer für das Aktualisieren des Timer-Labels erstellen
         timer = new javax.swing.Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (comp) {
-                    secondsPassed--;
+                //check if timer is active to avoid that the timer is ticking after the game is over
+                if (timerActive) {
+                    //when it is competitive game the timer counts down and shows a msgBox when the timer is 0
+                    if (comp) {
+                        secondsPassed--;
+                        if (secondsPassed ==0) {
+                            stopTimer();
+                            JOptionPane.showMessageDialog(null, username+" you lost!");
+                        }
+                    }
+                    //normal game the time is just counted 
+                    else {
+                        secondsPassed++;
+                    }
+                    updateTimerLabel();
                 }
-                else {
-                    secondsPassed++;
-                }
-                updateTimerLabel();
             }
         });
     }
 
+    //set timerActive
+    public void setTimerActive(boolean b) {
+        this.timerActive = b;
+    }
     // Starte den Timer
     public void startTimer() {
         timer.start();

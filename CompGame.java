@@ -38,9 +38,9 @@ public class CompGame extends JFrame {
         
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
-        board = new CompBoard(ROWS, COLS, MINES);
-        board.setusername1(nameinput1); //add usernames
-        board.setusername2(nameinput2);
+        board = new CompBoard(ROWS, COLS, MINES, nameinput1, nameinput2);
+        //board.setusername1(nameinput1); //add usernames
+        //board.setusername2(nameinput2);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
 
