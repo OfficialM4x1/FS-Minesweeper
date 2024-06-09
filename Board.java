@@ -9,7 +9,7 @@ class Board extends JPanel {
     private int rows;
     private int cols;
     private int mines;
-    private boolean GameOver;
+    private boolean gameOver;
 
     private JButton[][] buttons;
     boolean[][] isMine;
@@ -39,6 +39,7 @@ class Board extends JPanel {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
+        this.gameOver = false;
         
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
@@ -90,29 +91,36 @@ class Board extends JPanel {
                 buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
-                            revealCell(row, col);
-                            if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                JOptionPane.showMessageDialog(Board.this, "You won the game!");
-                                timer.stopTimer();
+                            //checks if the game is over
+                            if (!gameOver) {
+                                revealCell(row, col);
+                                if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                    JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                    gameOver = true;
+                                    timer.stopTimer();
+                                }
                             }
                         }
                         //ability to flag mines with aright click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
-                            if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                JOptionPane.showMessageDialog(Board.this, "You won the game!");
-                                timer.stopTimer();
-                            }
-                            //unflag field 
-                            if (isFlaged[row][col] == true) {
-                                colourSquare(row, col, isRevealed[row][col]);
-                                isFlaged[row][col] = false;
-                                buttons[row][col].setIcon(null);
-                                buttons[row][col].setBackground(Color.DARK_GRAY);
-                            }
-                            else {
-                                buttons[row][col].setBackground(Color.LIGHT_GRAY);
-                                buttons[row][col].setIcon(flaggeicon);
-                                isFlaged[row][col] = true;
+                            if (!gameOver) {
+                                if (solved(rows, cols) && solvedmines(rows, cols)) {
+                                    JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                    gameOver = true;
+                                    timer.stopTimer();
+                                }
+                                //unflag field 
+                                if (isFlaged[row][col] == true) {
+                                    colourSquare(row, col, isRevealed[row][col]);
+                                    isFlaged[row][col] = false;
+                                    buttons[row][col].setIcon(null);
+                                    buttons[row][col].setBackground(Color.DARK_GRAY);
+                                }
+                                else {
+                                    buttons[row][col].setBackground(Color.LIGHT_GRAY);
+                                    buttons[row][col].setIcon(flaggeicon);
+                                    isFlaged[row][col] = true;
+                                }
                             }
                         }
                     } 
@@ -185,7 +193,7 @@ class Board extends JPanel {
             buttons[row][col].setBackground(Color.LIGHT_GRAY);
             buttons[row][col].setIcon(mineicon);
             JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
-            GameOver = true;
+            gameOver = true;
             timer.stopTimer();
 
             revealAllMines();
@@ -276,7 +284,7 @@ class Board extends JPanel {
 
     //get Method for GameOver
     public boolean getGameOver() {
-        return this.GameOver;
+        return this.gameOver;
     }
 
     //winning function
