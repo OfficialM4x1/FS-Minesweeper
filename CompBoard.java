@@ -263,7 +263,13 @@ class CompBoard extends JPanel {
         if (isMine[row][col]) {
             buttons[row][col].setBackground(Color.LIGHT_GRAY);
             buttons[row][col].setIcon(mineicon);
-            JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
+            
+            if (currentPlayer == 1) {
+                JOptionPane.showMessageDialog(this, username1 +" you lost!");
+            }
+            else {
+                JOptionPane.showMessageDialog(this, username2 +" you lost!");
+            }
             gameOver = true;
             timer1.stopTimer();
             timer2.stopTimer();
