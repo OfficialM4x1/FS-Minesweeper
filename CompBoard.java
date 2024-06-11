@@ -19,16 +19,16 @@ class CompBoard extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
-    ImageIcon mineicon = new ImageIcon("mine.png");
-    ImageIcon flaggeicon = new ImageIcon("flagge.png");
-    ImageIcon oneicon = new ImageIcon("icon1.png");
-    ImageIcon twoicon = new ImageIcon("icon2.png");
-    ImageIcon threeicon = new ImageIcon("icon3.png");
-    ImageIcon fouricon = new ImageIcon("icon4.png");
-    ImageIcon fiveicon = new ImageIcon("icon5.png");
-    ImageIcon sixicon = new ImageIcon("icon6.png");
-    ImageIcon sevenicon = new ImageIcon("icon7.png");
-    ImageIcon eighticon = new ImageIcon("icon8.png");
+    ImageIcon mineicon = new ImageIcon("images/mine.png");
+    ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
+    ImageIcon oneicon = new ImageIcon("images/icon1.png");
+    ImageIcon twoicon = new ImageIcon("images/icon2.png");
+    ImageIcon threeicon = new ImageIcon("images/icon3.png");
+    ImageIcon fouricon = new ImageIcon("images/icon4.png");
+    ImageIcon fiveicon = new ImageIcon("images/icon5.png");
+    ImageIcon sixicon = new ImageIcon("images/icon6.png");
+    ImageIcon sevenicon = new ImageIcon("images/icon7.png");
+    ImageIcon eighticon = new ImageIcon("images/icon8.png");
 
     private int currentPlayer;
     Random random = new Random();

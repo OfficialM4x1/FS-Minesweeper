@@ -1,30 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CompGame extends JFrame {
-    private int ROWS = 18;
-    private int COLS = 18;
-    private int MINES = 35;
-    ImageIcon menuicon = new ImageIcon("menu.png");
-    ImageIcon hinticon = new ImageIcon("hint.png");
-    ImageIcon tutorialicon = new ImageIcon("tutorial.png");
-
+    ImageIcon menuicon = new ImageIcon("images/menu.png");
+    ImageIcon hinticon = new ImageIcon("images/hint.png");
+    ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
     private CompBoard board;
 
     public CompGame(int ROWS, int COLS, int MINES) {
-        this.ROWS = ROWS;
-        this.COLS = COLS;
-        this.MINES = MINES;
+ 
         //here you can adjust the frame how you like 
         setTitle("Minesweeper COMPETITIVE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null); 
         //change little icon of window 
-        ImageIcon image = new ImageIcon("mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
+        ImageIcon image = new ImageIcon("images/mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
         setIconImage(image.getImage());
 
         //player names
