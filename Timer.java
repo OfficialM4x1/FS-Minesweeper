@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//aus Chat import
+//basic timer with label that counts upwards is created with ChatGPT, the addional functionality is all handmade
 public class Timer extends JPanel {
     private JLabel timerLabel;
     private javax.swing.Timer timer;

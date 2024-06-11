@@ -18,6 +18,7 @@ class Board extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
+    //HIER NOCH QUELLE ZU DEN BILDERN EINFUEGEN
     ImageIcon mineicon = new ImageIcon("mine.png");
     ImageIcon flaggeicon = new ImageIcon("flagge.png");
     ImageIcon oneicon = new ImageIcon("icon1.png");

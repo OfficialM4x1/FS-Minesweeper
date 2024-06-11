@@ -65,7 +65,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(60);
+        timer1.setTimer(20);
         topBoardPanel.add(timer1);
 
         //player 2
@@ -73,7 +73,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(10);
+        timer2.setTimer(20);
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
