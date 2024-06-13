@@ -4,7 +4,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 class Board extends JPanel {
-    
+
+    private String amogus = "paris war hier";
     //Intilize content game board 
     private int rows;
     private int cols;
