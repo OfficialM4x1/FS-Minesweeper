@@ -270,10 +270,10 @@ class CompBoard extends JPanel {
             buttons[row][col].setIcon(mineicon);
             
             if (currentPlayer == 1) {
-                JOptionPane.showMessageDialog(this, username1 +" you lost!");
+                JOptionPane.showMessageDialog(this, username2 +" you lost!");
             }
             else {
-                JOptionPane.showMessageDialog(this, username2 +" you lost!");
+                JOptionPane.showMessageDialog(this, username1 +" you lost!");
             }
             gameOver = true;
             timer1.stopTimer();
