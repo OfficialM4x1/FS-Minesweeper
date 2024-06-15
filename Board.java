@@ -92,8 +92,8 @@ class Board extends JPanel {
                 buttons[i][j].addMouseListener(new MouseAdapter() { //Mouse listener to differnetiate between left and right click on mouse
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
-                            //checks if the game is over
-                            if (!gameOver) {
+                            //checks if the game is over and if mine is flagged 
+                            if (!gameOver && !isFlaged[row][col]) {
                                 revealCell(row, col);
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(Board.this, "You won the game!");
