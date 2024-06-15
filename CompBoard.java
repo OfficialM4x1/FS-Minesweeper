@@ -374,6 +374,7 @@ class CompBoard extends JPanel {
         return this.gameOver;
     }
 
+
     //winning function
 
     //give row i and coloumn j plus True incase the field is revield (to adjust the colour)

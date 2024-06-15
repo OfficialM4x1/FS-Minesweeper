@@ -6,4 +6,8 @@ public class GameTest {
     public void test() {
         assertEquals(2, 1+1);
     }
+
+    //test if all images actually exists
+
+    
 }

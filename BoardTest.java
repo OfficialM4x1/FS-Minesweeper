@@ -21,5 +21,13 @@ public class BoardTest {
         assertEquals(board1.getMines(), 30);
     }
 
+    //test gameOver when mine clicked --> gameover = true
+
+    //Test bei compboard when time = 0 --> gameover = true 
+
+    //test that the right player looses in comp modus
+
+    //when gameover --> kein clicken auf alle buttons mehr möglich
+
     
 }
