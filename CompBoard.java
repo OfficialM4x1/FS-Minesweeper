@@ -65,7 +65,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(20);
+        timer1.setTimer(20); //set start time 
         topBoardPanel.add(timer1);
 
         //player 2
@@ -73,7 +73,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(20);
+        timer2.setTimer(20); //set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -100,11 +100,16 @@ class CompBoard extends JPanel {
         placeMines();
         
         currentPlayer = random.nextInt(2) + 1; //decides random which player starts
+
+
+
         if (currentPlayer==1) {
+            JOptionPane.showMessageDialog(this, "Player 1: " + username1+  " starts", "Information", JOptionPane.INFORMATION_MESSAGE);
             System.out.println("player one starts"); //hier coole message box
             timer1.startTimer();
         }
         else {
+            JOptionPane.showMessageDialog(this, "Player 2: "+ username2+  "  starts", "Information", JOptionPane.INFORMATION_MESSAGE);
             timer2.startTimer();
         }
 
