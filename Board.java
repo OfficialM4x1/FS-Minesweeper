@@ -1,4 +1,5 @@
 //@author class Silas Abler
+import com.sun.source.doctree.ThrowsTree;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -286,6 +287,21 @@ class Board extends JPanel {
     //get Method for GameOver
     public boolean getGameOver() {
         return this.gameOver;
+    }
+
+    //get Method for rows
+    public int getRows(){
+        return this.rows;
+    }
+
+    //get Method for cols
+    public int getCols(){
+        return this.cols;
+    }
+
+    //get Method for mines
+    public int getMines(){
+        return this.mines;
     }
 
     //winning function
