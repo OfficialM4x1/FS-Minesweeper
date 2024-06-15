@@ -10,7 +10,7 @@ public class Timer extends JPanel {
     private boolean comp;
     private boolean timerActive;
 
-    public Timer(String username) {
+    public Timer(String username, CompBoard b) {
         timerLabel = new JLabel("00:00");
         add(timerLabel);
         timerActive = true;
@@ -27,6 +27,7 @@ public class Timer extends JPanel {
                         if (secondsPassed ==0) {
                             stopTimer();
                             JOptionPane.showMessageDialog(null, username+" you lost!");
+                            b.setGameOver(true);
                         }
                     }
                     //normal game the time is just counted 

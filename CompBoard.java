@@ -62,7 +62,7 @@ class CompBoard extends JPanel {
         //player 1
         usernamLabel1 = new JLabel(username1); //Player 1 username
         System.out.println(username1);
-        this.timer1 = new Timer(username1);
+        this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
         timer1.setTimer(20); //set start time 
@@ -70,7 +70,7 @@ class CompBoard extends JPanel {
 
         //player 2
         usernamLabel2 = new JLabel(username2);
-        this.timer2 = new Timer(username2);
+        this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
         timer2.setTimer(20); //set start time 
@@ -217,6 +217,10 @@ class CompBoard extends JPanel {
     public void setusername2(String username) {
         usernamLabel2.setText(username);
         this.username2 = username;
+    }
+
+    public void setGameOver(boolean b) {
+        this.gameOver = b;
     }
 
     public boolean solved(int row, int col) {

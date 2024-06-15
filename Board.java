@@ -32,7 +32,7 @@ class Board extends JPanel {
     
     String username;
     JLabel usernamLabel;
-    Timer timer = new Timer(username);
+    Timer timer = new Timer(username, null);
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
