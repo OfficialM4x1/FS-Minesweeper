@@ -71,23 +71,26 @@ public class Game extends JFrame {
         giveahint.setContentAreaFilled(false);
         giveahint.setBorderPainted(false);
 
+        //hint button that reveals on cell 
         giveahint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!board.solved(ROWS, COLS)) {
-                    int row = (int)(Math.random() * ROWS);
-                    int col = (int)(Math.random() * COLS);
-                    boolean done = false;
-                    while (done == false) {
-                        if (board.checkrevealed(row, col)) {
-                            row = (int)(Math.random() * ROWS);
-                            col = (int)(Math.random() * COLS);                         
-                        } else if (board.checkmine(row, col)) {
-                            row = (int)(Math.random() * ROWS);
-                            col = (int)(Math.random() * COLS);                   
-                        } else {
-                            done = true;
-                            board.revealCell(row, col); 
+                if (!board.getGameOver()){
+                    if (!board.solved(ROWS, COLS)) {
+                        int row = (int)(Math.random() * ROWS);
+                        int col = (int)(Math.random() * COLS);
+                        boolean done = false;
+                        while (done == false) {
+                            if (board.checkrevealed(row, col)) {
+                                row = (int)(Math.random() * ROWS);
+                                col = (int)(Math.random() * COLS);                         
+                            } else if (board.checkmine(row, col)) {
+                                row = (int)(Math.random() * ROWS);
+                                col = (int)(Math.random() * COLS);                   
+                            } else {
+                                done = true;
+                                board.revealCell(row, col); 
+                            }
                         }
                     }
                 }
