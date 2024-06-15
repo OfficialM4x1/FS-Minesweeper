@@ -3,6 +3,7 @@ import static org.mockito.Mockito.*;
 
 import javax.swing.*;
 import java.awt.*;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
