@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class Game extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
@@ -108,7 +108,7 @@ public class Game extends JFrame {
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            String longMessage = "Welcome to Minesweeper!\r\n" + //
+            String longMessage = "Welcome to the Minesweeper Classic!\r\n" + //
                                  "\r\n" + //
                                  "The notorious retro game where your objective is to reveal all fields without setting off any explosives. First introduced in 1989, this classic has hardly lost its charm and continues to enjoy great popularity. The renowned gameplay and rules of the classic game remain unchanged to this day. However, just in case you are not familiar with them, here is a quick tutorial:\r\n" + //
                                 "\r\n" + //

@@ -1,7 +1,7 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class CompGame extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
@@ -108,8 +108,15 @@ public class CompGame extends JFrame {
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            String longMessage = "In Minesweeper, your goal is to navigate through a minefield without detonating any explosives. Imagine a grid of squares, some of which contain mines and others that can be safely uncovered. Each click reveals either a mine or a number indicating how many mines lurk in adjacent squares. To mark potential mines, simply right-click to place a flag. But be careful, detonating a mine will end the game. But this is the competitive mode! Your goal is to survive longer than your opponent. Just like in chess, you both have a timer that will make you lose if it runs out. Be careful, the timer will eventually run out, as the time runs faster after certain points. The other way to win is for your opponent to click on a mine.";
-            JTextArea textArea = new JTextArea(10, 30);
+            String longMessage = "Welcome to the local Minesweeper Competitive Mode!\r\n" + //
+                                 "\r\n" + //
+                                 "This mode combines the familiar gameplay with the thrill of competing against your friends. The objective of every player is to reveal all fields without setting off any explosives. The renowned gameplay and rules of the classic game remain unchanged. However, in the two player mode they were expanded by the following rules:\r\n" + //
+                                "\r\n" + //
+                                "You can alternately click on the fields to reveal them. Both players try to solve the game in the given time. If the time is up or you click on a bomb you loose.\r\n" + //
+                                "\r\n" + //
+                                "The combination of speed and accuracy is key to defeat your friends and mastering this version of the notorious classic. So, with these guidelines, dive in and enjoy the challenge of the new Minesweeper Competitive Mode!\r\n" + //
+                                 "";
+            JTextArea textArea = new JTextArea(20, 50);
             JScrollPane scrollPane = new JScrollPane(textArea);
 
             textArea.setText(longMessage);
