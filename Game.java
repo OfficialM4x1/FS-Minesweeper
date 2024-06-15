@@ -108,23 +108,14 @@ public class Game extends JFrame {
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            String longMessage = "In Minesweeper, your objective is to navigate through a minefield without setting off any explosives.\r\n" + //
+            String longMessage = "Welcome to Minesweeper!\r\n" + //
+                                 "\r\n" + //
+                                 "The notorious retro game where your objective is to reveal all fields without setting off any explosives. First introduced in 1989, this classic has hardly lost its charm and continues to enjoy great popularity. The renowned gameplay and rules of the classic game remain unchanged to this day. However, just in case you are not familiar with them, here is a quick tutorial:\r\n" + //
                                 "\r\n" + //
-                                "·Picture a grid of squares, some concealing mines and others safe to uncover.\r\n" + //
+                                "Picture a grid of squares, some concealing mines and others safe to uncover. Your objective is to reveal all fields of the minefield that are not bombs. You can make a guess by clicking on a field, uncovering either a mine or a number. The latter indicating how many mines lurk in adjacent squares. To mark potential mines, simply right-click to place a flag. This will help you remembering the mines you think you have uncovered. But be cautious! If you hit a mine, the game is over. Success hinges on strategic uncovering - start with less risky areas and progress logically. By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares.\r\n" + //
                                 "\r\n" + //
-                                "·Each click reveals either a mine or a number, indicating how many mines lurk in adjacent squares.\r\n" + //
-                                "\r\n" + //
-                                "·To mark potential mines, simply right-click to place a flag.\r\n" + //
-                                "\r\n" + //
-                                "·But be cautious, detonating a mine ends the game.\r\n" + //
-                                "\r\n" + //
-                                "·Success hinges on strategic uncovering - start with less risky areas and progress logically.\r\n" + //
-                                "\r\n" + //
-                                "·By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares.\r\n" + //
-                                "\r\n" + //
-                                "·Ultimately, winning requires uncovering all safe squares while avoiding any explosions.\r\n" + //
-                                "\r\n" + //
-                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!";
+                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!\r\n" + //
+                                 "";
             JTextArea textArea = new JTextArea(20, 50);
             JScrollPane scrollPane = new JScrollPane(textArea);
 
