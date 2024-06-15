@@ -108,8 +108,24 @@ public class Game extends JFrame {
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            String longMessage = "In Minesweeper, your objective is to navigate through a minefield without setting off any explosives. Picture a grid of squares, some concealing mines and others safe to uncover. Each click reveals either a mine or a number, indicating how many mines lurk in adjacent squares. To mark potential mines, simply right-click to place a flag. But be cautious, detonating a mine ends the game. Success hinges on strategic uncovering—start with less risky areas and progress logically. By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares. Ultimately, winning requires uncovering all safe squares while avoiding any explosions. Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!";
-            JTextArea textArea = new JTextArea(10, 30);
+            String longMessage = "In Minesweeper, your objective is to navigate through a minefield without setting off any explosives.\r\n" + //
+                                "\r\n" + //
+                                "·Picture a grid of squares, some concealing mines and others safe to uncover.\r\n" + //
+                                "\r\n" + //
+                                "·Each click reveals either a mine or a number, indicating how many mines lurk in adjacent squares.\r\n" + //
+                                "\r\n" + //
+                                "·To mark potential mines, simply right-click to place a flag.\r\n" + //
+                                "\r\n" + //
+                                "·But be cautious, detonating a mine ends the game.\r\n" + //
+                                "\r\n" + //
+                                "·Success hinges on strategic uncovering - start with less risky areas and progress logically.\r\n" + //
+                                "\r\n" + //
+                                "·By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares.\r\n" + //
+                                "\r\n" + //
+                                "·Ultimately, winning requires uncovering all safe squares while avoiding any explosions.\r\n" + //
+                                "\r\n" + //
+                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!";
+            JTextArea textArea = new JTextArea(20, 50);
             JScrollPane scrollPane = new JScrollPane(textArea);
 
             textArea.setText(longMessage);
