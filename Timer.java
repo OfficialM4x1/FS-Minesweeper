@@ -54,6 +54,10 @@ public class Timer extends JPanel {
         timer.stop();
     }
 
+    public int getSeconds() {
+        return secondsPassed;
+    }
+
     // set time
     public void setTimer(int secondsPassed) { //set the starttime in seconds 
         this.secondsPassed = secondsPassed;

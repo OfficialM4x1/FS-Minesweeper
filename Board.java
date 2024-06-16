@@ -3,6 +3,7 @@ import com.sun.source.doctree.ThrowsTree;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.sql.*;
 
 class Board extends JPanel {
 
@@ -42,7 +43,7 @@ class Board extends JPanel {
         this.cols = cols;
         this.mines = mines;
         this.gameOver = false;
-        
+
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
         topBoardPanel.setPreferredSize(new Dimension(600, 30)); 
@@ -100,6 +101,33 @@ class Board extends JPanel {
                                     JOptionPane.showMessageDialog(Board.this, "You won the game!");
                                     gameOver = true;
                                     timer.stopTimer();
+                                    Connection c = null;
+                                    Statement stmt = null;                                    
+                                    try {
+                                        Class.forName("org.sqlite.JDBC");
+                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c.setAutoCommit(false);                                 
+                                        stmt = c.createStatement();
+                                        ResultSet rs = stmt.executeQuery( "SELECT COUNT(*) AS total FROM PLAYERS;" );
+                                        int amountofentries = rs.getInt("total") + 1; 
+                                        rs.close();
+                                        stmt.close();
+                                        c.close();
+
+                                        Class.forName("org.sqlite.JDBC");
+                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c.setAutoCommit(false);
+                                        stmt = c.createStatement();
+                                        String sql = "INSERT INTO PLAYERS (ID,NAME,TIME) " +
+                                                        "VALUES ("+amountofentries+",'"+ username +"'," +timer.getSeconds()+");";
+                                        stmt.executeUpdate(sql);
+                                        stmt.close();
+                                        c.commit();
+                                        c.close();
+                                     } catch ( Exception e2 ) {
+                                        System.err.println( e2.getClass().getName() + ": " + e2.getMessage() );
+                                        System.exit(0);
+                                     }                                  
                                 }
                             }
                         }
@@ -110,6 +138,33 @@ class Board extends JPanel {
                                     JOptionPane.showMessageDialog(Board.this, "You won the game!");
                                     gameOver = true;
                                     timer.stopTimer();
+                                    Connection c = null;
+                                    Statement stmt = null;                                    
+                                    try {
+                                        Class.forName("org.sqlite.JDBC");
+                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c.setAutoCommit(false);                                 
+                                        stmt = c.createStatement();
+                                        ResultSet rs = stmt.executeQuery( "SELECT COUNT(*) AS total FROM PLAYERS;" );
+                                        int amountofentries = rs.getInt("total") + 1;
+                                        rs.close();
+                                        stmt.close();
+                                        c.close();
+
+                                        Class.forName("org.sqlite.JDBC");
+                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c.setAutoCommit(false);
+                                        stmt = c.createStatement();
+                                        String sql = "INSERT INTO PLAYERS (ID,NAME,TIME) " +
+                                                        "VALUES ("+amountofentries+",'"+ username +"'," +timer.getSeconds()+");"; 
+                                        stmt.executeUpdate(sql);
+                                        stmt.close();
+                                        c.commit();
+                                        c.close();
+                                     } catch ( Exception e2 ) {
+                                        System.err.println( e2.getClass().getName() + ": " + e2.getMessage() );
+                                        System.exit(0);
+                                     }                          
                                 }
                                 //unflag field 
                                 if (isFlaged[row][col] == true) {
@@ -141,8 +196,9 @@ class Board extends JPanel {
         return isRevealed[row][col];
     }
 
-    public void setusername(String username) {
-        usernamLabel.setText(username);
+    public void setusername(String username2) {
+        usernamLabel.setText(username2);
+        username = username2;
     }
 
     public boolean solved(int row, int col) {
