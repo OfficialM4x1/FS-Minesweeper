@@ -9,8 +9,10 @@ public class MainFrame extends JFrame implements ActionListener {
     private JButton easyButton;
     private JButton mediumButton;
     private JButton hardButton;
-    private JButton competitiveButton;
 
+    /**
+     * 
+     */
     public MainFrame() {
         setTitle("MINESWEEPER");
         setSize(700, 700);
@@ -34,24 +36,16 @@ public class MainFrame extends JFrame implements ActionListener {
         easyButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         easyButton.addActionListener(this);
         menu.add(easyButton);
-
         menu.add(Box.createVerticalStrut(20));
         mediumButton = new JButton("CLASSIC MEDIUM");
         mediumButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         mediumButton.addActionListener(this);
         menu.add(mediumButton);
-
         menu.add(Box.createVerticalStrut(20));
         hardButton = new JButton("CLASSIC HARD");
         hardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         hardButton.addActionListener(this);
         menu.add(hardButton);
-
-        menu.add(Box.createVerticalStrut(20));
-        competitiveButton = new JButton("COMPETITIVE MODE");
-        competitiveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        competitiveButton.addActionListener(this);
-        menu.add(competitiveButton);
 
         cardPanel.add(menu, "MENU");
 
@@ -60,6 +54,7 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     @Override
+     
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == easyButton) {
             Game mygame = new Game(18, 18, 35);
@@ -67,8 +62,6 @@ public class MainFrame extends JFrame implements ActionListener {
             Game mygame2 = new Game(25, 25, 90);
         } else if (e.getSource() == hardButton) {
             Game mygame3 = new Game(32, 32, 150);
-        } else if (e.getSource() == competitiveButton){
-            CompGame compgame = new CompGame(18, 18, 35);
         }
     }
 
