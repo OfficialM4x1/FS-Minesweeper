@@ -153,8 +153,5 @@ public class CompGame extends JFrame {
 
         add(mainPanel);
         setVisible(true);
-
-   
-
     }
 }
