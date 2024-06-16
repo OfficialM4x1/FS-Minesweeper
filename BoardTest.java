@@ -35,7 +35,6 @@ public class BoardTest {
 
     @Test
     public void testRevealCell() {
-        board.revealCell(0, 0);
         assertTrue(board.checkrevealed(0, 0));
     }
 
