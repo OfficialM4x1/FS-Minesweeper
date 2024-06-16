@@ -11,7 +11,7 @@ public class MainFrame extends JFrame implements ActionListener {
     private JButton hardButton;
 
     /**
-     * 
+     * MainFrame for graphical interface 
      */
     public MainFrame() {
         setTitle("MINESWEEPER");
