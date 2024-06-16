@@ -50,6 +50,10 @@ public class CompGame extends JFrame {
             c.setVgap(10);
             rightPanel.setLayout(c);
 
+        JPanel designpanel = new JPanel();
+        designpanel.setBackground(Color.WHITE);
+        rightPanel.add(designpanel);
+
         JButton backtomenu = new JButton();
         rightPanel.add(backtomenu);
         backtomenu.setIcon(menuicon);
@@ -64,6 +68,13 @@ public class CompGame extends JFrame {
                 setVisible(false);
             }
         });
+
+        JPanel menutext = new JPanel();
+        JLabel labelmenu = new JLabel("Back to menu");
+        labelmenu.setFont(new Font("Verdana", Font.PLAIN, 16)); 
+        menutext.add(labelmenu);
+        menutext.setBackground(Color.WHITE);
+        rightPanel.add(menutext);
 
         JButton giveahint = new JButton();
         rightPanel.add(giveahint);
@@ -96,7 +107,13 @@ public class CompGame extends JFrame {
                 }
             }
         });
-        
+
+        JPanel hinttext = new JPanel();
+        JLabel labelhint = new JLabel("Get a hint");
+        labelhint.setFont(new Font("Verdana", Font.PLAIN, 16)); 
+        hinttext.add(labelhint);
+        hinttext.setBackground(Color.WHITE);
+        rightPanel.add(hinttext);        
 
         JButton showtutorial = new JButton();
         rightPanel.add(showtutorial);
@@ -126,6 +143,13 @@ public class CompGame extends JFrame {
             JOptionPane.showMessageDialog(board, scrollPane, "Tutorial", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+
+        JPanel tutorialtext = new JPanel();
+        JLabel tutorialhint = new JLabel("View the tutorial");
+        tutorialhint.setFont(new Font("Verdana", Font.PLAIN, 16)); 
+        tutorialtext.add(tutorialhint);
+        tutorialtext.setBackground(Color.WHITE);
+        rightPanel.add(tutorialtext);
 
         add(mainPanel);
         setVisible(true);
