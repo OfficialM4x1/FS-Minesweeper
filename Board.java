@@ -36,13 +36,23 @@ class Board extends JPanel {
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
+
+    /**
+     * 
+     * @param rows depending on difficulty
+     * @param cols depending on difficulty
+     * @param mines pass the number of mines 
+     * constructor of a board starting with a non-gameover game
+     */
     public Board(int rows, int cols, int mines) {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
         this.gameOver = false;
         
-        //InfoPanel for Game with Timer Username etc
+        /**
+         * set up the info board for username, size, layout, timer etc.
+         */
         topBoardPanel = new JPanel();
         topBoardPanel.setPreferredSize(new Dimension(600, 30)); 
         topBoardPanel.setBackground(Color.WHITE);
@@ -68,6 +78,10 @@ class Board extends JPanel {
             
         bottomBoardPanel.setLayout(new GridLayout(rows, cols));
 
+        /**
+         * set up buttons 
+         */
+
         buttons = new JButton[rows][cols];
         isMine = new boolean[rows][cols];
         isRevealed = new boolean[rows][cols];
@@ -75,9 +89,14 @@ class Board extends JPanel {
         placeMines();
         timer.startTimer();
 
-        //loops through the rows 
+         
+        /**
+         *  loop through the rows
+         */
         for (int i = 0; i < rows; i++) {
-            //loops through the whole column before going to the next row
+            /**
+             * double loop for making first the whole column and then the next one
+             */
             for (int j = 0; j < cols; j++) {
                 final int row = i;
                 final int col = j;
@@ -132,18 +151,37 @@ class Board extends JPanel {
     
     }
 
+    /**
+     * 
+     * @param row rownumber
+     * @param col column number
+     * @return true or false if a mine is place on the specified field
+     */
     public boolean checkmine(int row, int col) {
         return isMine[row][col];
     }
-
+/**
+ * 
+ * @param row row number
+ * @param col col number 
+ * @return checks whether the mionde is revealed on the specified field
+ */
     public boolean checkrevealed(int row, int col) {
         return isRevealed[row][col];
     }
-
+/**
+ * 
+ * @param username inputted name by the user at the beginning of the game
+ */
     public void setusername(String username) {
         usernamLabel.setText(username);
     }
-
+/**
+ * 
+ * @param row number
+ * @param col number
+ * @return true if all non-mine cells are revealed, false otherwise
+ */
     public boolean solved(int row, int col) {
         int counter = 0;
         for (int i = 0; i < row; i++) {
@@ -284,13 +322,23 @@ class Board extends JPanel {
     }
 
     //get Method for GameOver
+    /**
+     * 
+     * @return getter for gameover 
+     */
     public boolean getGameOver() {
         return this.gameOver;
     }
 
-    //winning function
+    //winning function 
 
     //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
+    /**
+     * 
+     * @param i row number
+     * @param j column number 
+     * @param revealed
+     */
     private void colourSquare(int i, int j, boolean revealed) {
         buttons[i][j].setBackground(Color.LIGHT_GRAY);       
     }
