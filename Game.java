@@ -9,7 +9,12 @@ public class Game extends JFrame {
     ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
     private Board board;
 
-    
+    /**
+     * 
+     * @param ROWS
+     * @param COLS
+     * @param MINES
+     */
     public Game(int ROWS, int COLS, int MINES) {
 
         //here you can adjust the frame how you like 
