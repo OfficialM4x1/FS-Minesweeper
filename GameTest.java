@@ -1,3 +1,4 @@
+import org.junit.Test;
 import static org.assertj.swing.launcher.ApplicationLauncher.application;
 import static org.assertj.swing.finder.WindowFinder.findFrame;
 import static org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase.*;
