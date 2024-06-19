@@ -8,6 +8,8 @@ public class CompGame extends JFrame {
     ImageIcon hinticon = new ImageIcon("images/hint.png");
     ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
     private CompBoard board;
+    protected String nameinput1;
+    protected String nameinput2;
 
     public CompGame(int ROWS, int COLS, int MINES) {
  
@@ -21,8 +23,8 @@ public class CompGame extends JFrame {
         setIconImage(image.getImage());
 
         //player names
-        String nameinput1 = JOptionPane.showInputDialog(board, "Player 1, please enter your name:"); //user 1
-        String nameinput2 = JOptionPane.showInputDialog(board, "Player 2, please enter your name:"); //user 2
+        nameinput1 = JOptionPane.showInputDialog(board, "Player 1, please enter your name:"); //user 1
+        nameinput2 = JOptionPane.showInputDialog(board, "Player 2, please enter your name:"); //user 2
         
         //lowest panel where all the other panels sit on
         JPanel mainPanel = new JPanel();
@@ -122,8 +124,13 @@ public class CompGame extends JFrame {
 
         add(mainPanel);
         setVisible(true);
+    }
 
-   
+    public String getNameinput1() {
+        return nameinput1;
+    }
 
+    public String getNameinput2() {
+        return nameinput2;
     }
 }
