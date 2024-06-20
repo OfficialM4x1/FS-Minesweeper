@@ -19,6 +19,8 @@ public class MainFrame extends JFrame implements ActionListener {
     private ImageIcon firsticon = new ImageIcon("images/first.png");
     private ImageIcon secondicon = new ImageIcon("images/second.png");
     private ImageIcon thirdicon = new ImageIcon("images/third.png");
+    String[] options = {"Standard", "EM 2024", "Frankfurt School"};
+    JComboBox<String> comboBox = new JComboBox<>(options);
 
     public MainFrame() {
         setTitle("MINESWEEPER");
@@ -114,6 +116,13 @@ public class MainFrame extends JFrame implements ActionListener {
         competitiveButton.setFont(standardfont);
         competitiveButton.setForeground(Color.WHITE);
         middlemenu.add(competitiveButton);
+
+        middlemenu.add(Box.createVerticalStrut(5));
+        comboBox.setBackground(Color.DARK_GRAY);
+        comboBox.setBorder(whiteBorder);
+        comboBox.setFont(standardfont);
+        comboBox.setForeground(Color.WHITE);
+        middlemenu.add(comboBox);
 
         JPanel leaderboardpanel = new JPanel();
         rightmenu.setLayout(new BorderLayout());
@@ -267,12 +276,13 @@ public class MainFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String selectedValue = (String) comboBox.getSelectedItem();
         if (e.getSource() == easyButton) {
-            Game mygame = new Game(18, 18, 35);
+            Game mygame = new Game(18, 18, 35, selectedValue);
         } else if (e.getSource() == mediumButton) {
-            Game mygame2 = new Game(25, 25, 90);
+            Game mygame2 = new Game(25, 25, 90, selectedValue);
         } else if (e.getSource() == hardButton) {
-            Game mygame3 = new Game(32, 32, 150);
+            Game mygame3 = new Game(32, 32, 150, selectedValue);
         } else if (e.getSource() == competitiveButton){
             CompGame compgame = new CompGame(18, 18, 35);
         }

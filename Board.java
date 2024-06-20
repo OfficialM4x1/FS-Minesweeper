@@ -20,6 +20,7 @@ class Board extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
+
     //HIER NOCH QUELLE ZU DEN BILDERN EINFUEGEN
     ImageIcon mineicon = new ImageIcon("images/mine.png");
     ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
@@ -31,6 +32,8 @@ class Board extends JPanel {
     ImageIcon sixicon = new ImageIcon("images/icon6.png");
     ImageIcon sevenicon = new ImageIcon("images/icon7.png");
     ImageIcon eighticon = new ImageIcon("images/icon8.png");
+    String wontext = "You won the game!";
+    String loosetext = "Game Over! You clicked on a mine.";
     
     String username;
     JLabel usernamLabel;
@@ -38,11 +41,13 @@ class Board extends JPanel {
 
     //Constructor of a board 
     //pass number of mines, rows and columns depending on the difficulty
-    public Board(int rows, int cols, int mines) {
+    public Board(int rows, int cols, int mines, String design) {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
         this.gameOver = false;
+
+        changedesign(design);
 
         //InfoPanel for Game with Timer Username etc
         topBoardPanel = new JPanel();
@@ -99,7 +104,7 @@ class Board extends JPanel {
                             if (!gameOver && !isFlaged[row][col]) {
                                 revealCell(row, col);
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                    JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                    JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;
                                     timer.stopTimer();
                                     Connection c = null;
@@ -136,7 +141,7 @@ class Board extends JPanel {
                         else if (SwingUtilities.isRightMouseButton(e)) {
                             if (!gameOver) {
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                    JOptionPane.showMessageDialog(Board.this, "You won the game!");
+                                    JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;
                                     timer.stopTimer();
                                     Connection c = null;
@@ -243,6 +248,24 @@ class Board extends JPanel {
         }
     }
 
+    public void changedesign (String design) {
+        if (design.equals("EM 2024")) {
+            mineicon = new ImageIcon("images/emmine.png");
+            flaggeicon = new ImageIcon("images/emflagge.png");
+            wontext = "Germany is European champion now! Congratulations!";
+            loosetext = "Unfortunately the enemies were better, we lost again!";
+        } else if (design.equals("Frankfurt School")) {
+            mineicon = new ImageIcon("images/fsmine.png");
+            flaggeicon = new ImageIcon("images/fsflagge.png");
+            wontext = "Congratiulations, you passed all your exams!";
+            loosetext = "Unfortunately you got exmatriculated!";
+        } else {
+            mineicon = new ImageIcon("images/mine.png");
+            flaggeicon = new ImageIcon("images/flagge.png");
+            
+        }
+    }
+
     public void revealCell(int row, int col) {
         buttons[row][col].setBackground(Color.LIGHT_GRAY);
         //check if field is already clicked
@@ -255,7 +278,7 @@ class Board extends JPanel {
         if (isMine[row][col]) {
             buttons[row][col].setBackground(Color.LIGHT_GRAY);
             buttons[row][col].setIcon(mineicon);
-            JOptionPane.showMessageDialog(this, "Game Over! You clicked on a mine.");
+            JOptionPane.showMessageDialog(this, loosetext);
             gameOver = true;
             timer.stopTimer();
 

@@ -10,7 +10,7 @@ public class Game extends JFrame {
     protected Board board;
 
     
-    public Game(int ROWS, int COLS, int MINES) {
+    public Game(int ROWS, int COLS, int MINES, String design) {
 
         //here you can adjust the frame how you like 
         String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
@@ -29,7 +29,7 @@ public class Game extends JFrame {
         
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
-        board = new Board(ROWS, COLS, MINES);
+        board = new Board(ROWS, COLS, MINES, design);
         board.setusername(nameinput);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
