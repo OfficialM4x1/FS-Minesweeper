@@ -7,8 +7,7 @@ public class Game extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
     ImageIcon hinticon = new ImageIcon("images/hint.png");
     ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
-    ImageIcon solvedicon = new ImageIcon("images/checksolved.png");
-    private Board board;
+    protected Board board;
 
     
     public Game(int ROWS, int COLS, int MINES) {
@@ -154,8 +153,5 @@ public class Game extends JFrame {
 
         add(mainPanel);
         setVisible(true);
-
-   
-
     }
 }

@@ -7,15 +7,15 @@ import java.util.Random;
 class CompBoard extends JPanel {
     
     //Intilize content game board 
-    private int rows;
-    private int cols;
+    protected int rows;
+    protected  int cols;
     private int mines;
-    private boolean gameOver;
+    protected boolean gameOver;
 
-    private JButton[][] buttons;
-    boolean[][] isMine;
-    private boolean[][] isRevealed;
-    private boolean[][] isFlaged;
+    protected JButton[][] buttons;
+    protected boolean[][] isMine;
+    protected boolean[][] isRevealed;
+    protected boolean[][] isFlaged;
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
@@ -189,6 +189,11 @@ class CompBoard extends JPanel {
     public int getCurrentPlayer() {
         return this.currentPlayer;
     }
+
+    public int setCurrentPlayer(int currentPlayer) {
+        return this.currentPlayer=currentPlayer;
+    }
+
     public String getPlayerWhoLost() {
         String s;
         if (currentPlayer == 1) {

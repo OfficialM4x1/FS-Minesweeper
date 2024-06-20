@@ -1,33 +1,106 @@
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
 public class BoardTest {
-    Board board1 = new Board(10,20,30);
     @Test
-    public void testgetRows() {
-        
-        assertEquals(board1.getRows(), 10);
+    public void testBoardInitialization() {
+        Board board = new Board(10, 10, 10);
+        assertEquals(10, board.getRows());
+        assertEquals(10, board.getCols());
+        assertEquals(10, board.getMines());
+        assertFalse(board.getGameOver());
     }
 
     @Test
-    public void testgetCols() {
-        
-        assertEquals(board1.getCols(), 20);
+    public void testPlaceMines() {
+        Board board = new Board(10, 10, 10);
+        int mineCount = 0;
+        for (int i = 0; i < board.getRows(); i++) {
+            for (int j = 0; j < board.getCols(); j++) {
+                if (board.checkmine(i, j)) {
+                    mineCount++;
+                }
+            }
+        }
+        assertEquals(10, mineCount);
     }
 
     @Test
-    public void testgetMines() {
-        
-        assertEquals(board1.getMines(), 30);
+    public void testRevealCell() {
+        Board board = new Board(10, 10, 10);
+        board.revealCell(0, 0);
+        assertTrue(board.checkrevealed(0, 0));
     }
 
-    //test gameOver when mine clicked --> gameover = true
+    @Test
+    public void testGameOverOnMine() {
+        Board board = new Board(10, 10, 10);
+        // Find a mine to click on
+        int mineRow = -1, mineCol = -1;
+        for (int i = 0; i < board.getRows(); i++) {
+            for (int j = 0; j < board.getCols(); j++) {
+                if (board.checkmine(i, j)) {
+                    mineRow = i;
+                    mineCol = j;
+                    break;
+                }
+            }
+            if (mineRow != -1) break;
+        }
+        assertNotEquals(-1, mineRow);
+        assertNotEquals(-1, mineCol);
 
-    //Test bei compboard when time = 0 --> gameover = true 
+        board.revealCell(mineRow, mineCol);
+        assertTrue(board.getGameOver());
+    }
 
-    //test that the right player looses in comp modus
+    @Test
+    public void testSetUsername() {
+        Board board = new Board(10, 10, 10);
+        board.setusername("TestUser");
+        assertEquals("TestUser", board.usernamLabel.getText());
+    }
 
-    //when gameover --> kein clicken auf alle buttons mehr möglich
+    @Test
+    public void testSolved() {
+        Board board = new Board(3, 3, 1);
+        for (int i = 0; i < board.getRows(); i++) {
+            for (int j = 0; j < board.getCols(); j++) {
+                if (!board.checkmine(i, j)) {
+                    board.revealCell(i, j);
+                }
+            }
+        }
+        assertTrue(board.solved(3, 3));
+    }
 
-    
+    @Test
+    public void testSolvedMines() {
+        Board board = new Board(3, 3, 1);
+
+        // Get the positions of the mines
+        boolean[][] isMine = new boolean[board.getRows()][board.getCols()];
+        for (int i = 0; i < board.getRows(); i++) {
+            for (int j = 0; j < board.getCols(); j++) {
+                isMine[i][j] = board.checkmine(i, j);
+            }
+        }
+
+        // Flag all mines
+        boolean[][] isFlaged = board.getisFlaged();
+        for (int i = 0; i < board.getRows(); i++) {
+            for (int j = 0; j < board.getCols(); j++) {
+                if (isMine[i][j]) {
+                    isFlaged[i][j] = true;
+                }
+            }
+        }
+
+        // Check if all mines are flagged
+        assertFalse(board.solvedmines(3, 3));
+    }
 }

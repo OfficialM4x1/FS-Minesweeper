@@ -8,15 +8,15 @@ import java.sql.*;
 class Board extends JPanel {
 
     //Intilize content game board 
-    private int rows;
-    private int cols;
-    private int mines;
-    private boolean gameOver;
+    protected int rows;
+    protected int cols;
+    protected int mines;
+    protected boolean gameOver;
 
-    private JButton[][] buttons;
-    boolean[][] isMine;
-    private boolean[][] isRevealed;
-    private boolean[][] isFlaged;
+    protected JButton[][] buttons;
+    protected boolean[][] isMine;
+    protected boolean[][] isRevealed;
+    protected boolean[][] isFlaged;
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
@@ -200,6 +200,10 @@ class Board extends JPanel {
     public void setusername(String username2) {
         usernamLabel.setText(username2);
         username = username2;
+    }
+
+    public boolean[][] getisFlaged() {
+        return isFlaged;
     }
 
     public boolean solved(int row, int col) {
