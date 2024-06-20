@@ -51,6 +51,7 @@ class Board extends JPanel {
         usernamLabel = new JLabel(username);
         topBoardPanel.add(usernamLabel);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBackground(Color.WHITE);
         
         timer.setBackground(Color.WHITE);
         topBoardPanel.add(timer);
