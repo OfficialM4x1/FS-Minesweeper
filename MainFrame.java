@@ -42,7 +42,7 @@ public class MainFrame extends JFrame implements ActionListener {
         JPanel leftmenu = new JPanel();
         JPanel middlemenu = new JPanel();
         JPanel rightmenu = new JPanel();
-        middlemenu.setLayout(new GridLayout(10,1));
+        middlemenu.setLayout(new BorderLayout());
         rightmenu.setLayout(new GridLayout(4,1));
         leftmenu.setLayout(new GridLayout(1,1));
         menu.setBorder(new EmptyBorder(100, 40, 100, 40));
@@ -53,6 +53,9 @@ public class MainFrame extends JFrame implements ActionListener {
         leftmenu.setBackground(Color.DARK_GRAY);
         middlemenu.setBackground(Color.DARK_GRAY);
         rightmenu.setBackground(Color.DARK_GRAY);
+        JPanel middlemenuoutside = new JPanel();
+        middlemenuoutside.setLayout(new GridLayout(10,1));
+        middlemenuoutside.setBackground(Color.DARK_GRAY);
         JButton advertisementbutton = new JButton();
         advertisementbutton.setIcon(advertiseicon);
         advertisementbutton.setOpaque(false);
@@ -63,7 +66,8 @@ public class MainFrame extends JFrame implements ActionListener {
         menuTitlePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel text = new JLabel("MENU");
         menuTitlePanel.add(text);
-        middlemenu.add(menuTitlePanel);
+        middlemenu.add(middlemenuoutside);
+        middlemenuoutside.add(menuTitlePanel);
         menuTitlePanel.setBackground(Color.DARK_GRAY);
         Font standardfont = new Font("Arial", Font.PLAIN, 20);
         Font bigfont = new Font("Arial", Font.PLAIN, 40);
@@ -71,6 +75,8 @@ public class MainFrame extends JFrame implements ActionListener {
         text.setFont(bigfont);
 
         Border whiteBorder = BorderFactory.createLineBorder(Color.WHITE, 8, true);
+
+        
 
 
         easyButton = new JButton("CLASSIC EASY");
@@ -82,8 +88,8 @@ public class MainFrame extends JFrame implements ActionListener {
         easyButton.setBorder(whiteBorder);
         easyButton.setFont(standardfont);
         easyButton.setForeground(Color.WHITE);
-        middlemenu.add(easyButton);
-        middlemenu.add(Box.createVerticalStrut(5));
+        middlemenuoutside.add(easyButton);
+        middlemenuoutside.add(Box.createVerticalStrut(5));
 
         mediumButton = new JButton("CLASSIC MEDIUM");
         mediumButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -94,8 +100,8 @@ public class MainFrame extends JFrame implements ActionListener {
         mediumButton.setBorder(whiteBorder);
         mediumButton.setFont(standardfont);
         mediumButton.setForeground(Color.WHITE);
-        middlemenu.add(mediumButton);
-        middlemenu.add(Box.createVerticalStrut(5));
+        middlemenuoutside.add(mediumButton);
+        middlemenuoutside.add(Box.createVerticalStrut(5));
 
         hardButton = new JButton("CLASSIC HARD");
         hardButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -106,8 +112,8 @@ public class MainFrame extends JFrame implements ActionListener {
         hardButton.setBorder(whiteBorder);
         hardButton.setFont(standardfont);
         hardButton.setForeground(Color.WHITE);
-        middlemenu.add(hardButton);
-        middlemenu.add(Box.createVerticalStrut(5));
+        middlemenuoutside.add(hardButton);
+        middlemenuoutside.add(Box.createVerticalStrut(5));
         
         competitiveButton = new JButton("COMPETITIVE MODE");
         competitiveButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -118,14 +124,14 @@ public class MainFrame extends JFrame implements ActionListener {
         competitiveButton.setBorder(whiteBorder);
         competitiveButton.setFont(standardfont);
         competitiveButton.setForeground(Color.WHITE);
-        middlemenu.add(competitiveButton);
+        middlemenuoutside.add(competitiveButton);
 
-        middlemenu.add(Box.createVerticalStrut(5));
+        middlemenuoutside.add(Box.createVerticalStrut(5));
         comboBox.setBackground(Color.DARK_GRAY);
         comboBox.setBorder(whiteBorder);
         comboBox.setFont(standardfont);
         comboBox.setForeground(Color.WHITE);
-        middlemenu.add(comboBox);
+        middlemenuoutside.add(comboBox);
 
         JPanel leaderboardpanel = new JPanel();
         rightmenu.setLayout(new BorderLayout());
