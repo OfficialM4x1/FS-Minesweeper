@@ -42,6 +42,7 @@ class CompBoard extends JPanel {
 
     private int currentPlayer;
     private Random random = new Random();
+    private int counterRevealedcells;
 
     // Player 1 properties
     private String username1;
@@ -69,6 +70,7 @@ class CompBoard extends JPanel {
         this.username1 = username1;
         this.username2 = username2;
         this.gameOver = false;
+        this.counterRevealedcells = 0;
         
         // Setup info panel for game with timer and usernames
         topBoardPanel = new JPanel();
@@ -80,7 +82,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(20); // Set start time 
+        timer1.setTimer(240); // Set start time 
         topBoardPanel.add(timer1);
 
         // Player 2 setup
@@ -88,7 +90,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(20); // Set start time 
+        timer2.setTimer(240); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -140,6 +142,10 @@ class CompBoard extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             if (!gameOver) {
+                                if (counterRevealedcells%20 == 0) {
+                                    timer1.setTimerStep();
+                                    timer2.setTimerStep();
+                                }
                                 // Switch between players and start/stop the timer
                                 if (!isRevealed[row][col]) {
                                     if (currentPlayer == 1) {
@@ -154,6 +160,7 @@ class CompBoard extends JPanel {
                                 }
                                 // Normal revealing of cell
                                 revealCell(row, col);
+                                counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();
