@@ -279,13 +279,13 @@ class Board extends JPanel {
         if (design.equals("EM 2024")) {
             mineicon = new ImageIcon("images/emmine.png");
             flaggeicon = new ImageIcon("images/emflagge.png");
-            wontext = "Germany is European champion now! Congratulations!";
-            loosetext = "Unfortunately the enemies were better, we lost again!";
+            wontext = "Great Job! A stunishing 7:1 win against Brazil!";
+            loosetext = "Red Card! You were sent off field!";
         } else if (design.equals("Frankfurt School")) {
             mineicon = new ImageIcon("images/fsmine.png");
             flaggeicon = new ImageIcon("images/fsflagge.png");
-            wontext = "Congratiulations, you passed all your exams!";
-            loosetext = "Unfortunately you got exmatriculated!";
+            wontext = "You got the internship!";
+            loosetext = "LOWPERFORMER! IB not possible anymore!";
         } else {
             mineicon = new ImageIcon("images/mine.png");
             flaggeicon = new ImageIcon("images/flagge.png");
