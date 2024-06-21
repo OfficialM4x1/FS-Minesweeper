@@ -22,6 +22,9 @@ public class MainFrame extends JFrame implements ActionListener {
     String[] options = {"Standard", "EM 2024", "Frankfurt School"};
     JComboBox<String> comboBox = new JComboBox<>(options);
 
+    /**
+     * MainFrame for graphical interface 
+     */
     public MainFrame() {
         setTitle("MINESWEEPER");
         setSize(700, 700);
@@ -275,6 +278,7 @@ public class MainFrame extends JFrame implements ActionListener {
     }
 
     @Override
+     
     public void actionPerformed(ActionEvent e) {
         String selectedValue = (String) comboBox.getSelectedItem();
         if (e.getSource() == easyButton) {

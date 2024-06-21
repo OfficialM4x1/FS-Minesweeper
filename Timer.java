@@ -10,6 +10,11 @@ public class Timer extends JPanel {
     private boolean comp;
     private boolean timerActive;
 
+    /**
+     * 
+     * @param username inputted username by the player
+     * @param b Competitive board
+     */
     public Timer(String username, CompBoard b) {
         timerLabel = new JLabel("00:00");
         add(timerLabel);
@@ -40,25 +45,31 @@ public class Timer extends JPanel {
         });
     }
 
-    //set timerActive
+    /**
+     * 
+     * @param b set timer active
+     */
     public void setTimerActive(boolean b) {
         this.timerActive = b;
     }
-    // Starte den Timer
+    /**
+     * start the timer
+     */
     public void startTimer() {
         timer.start();
     }
 
-    // Stoppe den Timer
+   /**
+    * stop the timer
+    */
     public void stopTimer() {
         timer.stop();
     }
 
-    public int getSeconds() {
-        return secondsPassed;
-    }
-
-    // set time
+  /**
+   * 
+   * @param secondsPassed number of seconds at which the starttime will begin
+   */
     public void setTimer(int secondsPassed) { //set the starttime in seconds 
         this.secondsPassed = secondsPassed;
         int minutes = secondsPassed / 60;
@@ -68,7 +79,9 @@ public class Timer extends JPanel {
         this.comp = true;
     }
 
-    // Methode zum Aktualisieren des Timer-Labels
+   /**
+    * method for updating the timer label
+    */
     private void updateTimerLabel() {
         int minutes = secondsPassed / 60;
         int seconds = secondsPassed % 60;

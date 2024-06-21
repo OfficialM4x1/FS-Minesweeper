@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+
+
 public class CompGame extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
     ImageIcon hinticon = new ImageIcon("images/hint.png");
@@ -11,6 +13,12 @@ public class CompGame extends JFrame {
     protected String nameinput1;
     protected String nameinput2;
 
+    /**
+     * Compgame creates a compboard and design a game for the two players as a competitive game
+     * @param ROWS number of rows on the board
+     * @param COLS number of columns on the bord
+     * @param MINES number of mines you want to place on the board
+     */
     public CompGame(int ROWS, int COLS, int MINES) {
  
         //here you can adjust the frame how you like 
@@ -63,7 +71,7 @@ public class CompGame extends JFrame {
         backtomenu.setContentAreaFilled(false);
         backtomenu.setBorderPainted(false);
         
-
+        
         backtomenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
