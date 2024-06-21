@@ -409,6 +409,7 @@ class CompBoard extends JPanel {
             for (int j = 0; j < cols; j++) {
                 if (isMine[i][j]) {
                     buttons[i][j].setIcon(mineicon);
+                    buttons[i][j].setBackground(Color.LIGHT_GRAY);
                 }
             }
         }

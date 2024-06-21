@@ -316,7 +316,7 @@ public class MainFrame extends JFrame implements ActionListener {
         cardPanel.add(menu, "MENU");
 
         // Display buttons in the main panel
-        getContentPane().add(cardPanel, BorderLayout.PAGE_START);
+        getContentPane().add(cardPanel);
     }
 
     @Override
