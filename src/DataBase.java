@@ -10,7 +10,7 @@ public class DataBase {
                                                                
       try {
          Class.forName("org.sqlite.JDBC");
-         c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+         c = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
          c.setAutoCommit(false);
          System.out.println("Opened database successfully");
    

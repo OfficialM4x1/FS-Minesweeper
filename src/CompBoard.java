@@ -29,16 +29,16 @@ class CompBoard extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
-    ImageIcon mineicon = new ImageIcon("images/mine.png");
-    ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
-    ImageIcon oneicon = new ImageIcon("images/icon1.png");
-    ImageIcon twoicon = new ImageIcon("images/icon2.png");
-    ImageIcon threeicon = new ImageIcon("images/icon3.png");
-    ImageIcon fouricon = new ImageIcon("images/icon4.png");
-    ImageIcon fiveicon = new ImageIcon("images/icon5.png");
-    ImageIcon sixicon = new ImageIcon("images/icon6.png");
-    ImageIcon sevenicon = new ImageIcon("images/icon7.png");
-    ImageIcon eighticon = new ImageIcon("images/icon8.png");
+    ImageIcon mineicon = new ImageIcon("src/images/mine.png");
+    ImageIcon flaggeicon = new ImageIcon("src/images/flagge.png");
+    ImageIcon oneicon = new ImageIcon("src/images/icon1.png");
+    ImageIcon twoicon = new ImageIcon("src/images/icon2.png");
+    ImageIcon threeicon = new ImageIcon("src/images/icon3.png");
+    ImageIcon fouricon = new ImageIcon("src/images/icon4.png");
+    ImageIcon fiveicon = new ImageIcon("src/images/icon5.png");
+    ImageIcon sixicon = new ImageIcon("src/images/icon6.png");
+    ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
+    ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
 
     private int currentPlayer;
     private Random random = new Random();
@@ -46,7 +46,7 @@ class CompBoard extends JPanel {
     // Player 1 properties
     private String username1;
     private JLabel usernamLabel1;
-    private Timer timer1;
+    protected Timer timer1;
 
     // Player 2 properties
     private String username2;

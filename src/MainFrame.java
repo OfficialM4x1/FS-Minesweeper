@@ -16,10 +16,10 @@ public class MainFrame extends JFrame implements ActionListener {
     private JButton hardButton;
     private JButton competitiveButton;
     private JPanel leaderboard1;
-    private ImageIcon advertiseicon = new ImageIcon("images/advertiseicon.png");
-    private ImageIcon firsticon = new ImageIcon("images/first.png");
-    private ImageIcon secondicon = new ImageIcon("images/second.png");
-    private ImageIcon thirdicon = new ImageIcon("images/third.png");
+    private ImageIcon advertiseicon = new ImageIcon("src/images/advertiseicon.png");
+    private ImageIcon firsticon = new ImageIcon("src/images/first.png");
+    private ImageIcon secondicon = new ImageIcon("src/images/second.png");
+    private ImageIcon thirdicon = new ImageIcon("src/images/third.png");
     String[] options = {"Standard", "EM 2024", "Frankfurt School"};
     JComboBox<String> comboBox = new JComboBox<>(options);
 

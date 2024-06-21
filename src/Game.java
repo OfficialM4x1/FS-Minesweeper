@@ -5,9 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Game extends JFrame {
-    ImageIcon menuicon = new ImageIcon("images/menu.png");
-    ImageIcon hinticon = new ImageIcon("images/hint.png");
-    ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
+    ImageIcon menuicon = new ImageIcon("src/images/menu.png");
+    ImageIcon hinticon = new ImageIcon("src/images/hint.png");
+    ImageIcon tutorialicon = new ImageIcon("src/images/tutorial.png");
     protected Board board;
 
     /**
@@ -26,7 +26,7 @@ public class Game extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null); 
         //change little icon of window 
-        ImageIcon image = new ImageIcon("images/mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
+        ImageIcon image = new ImageIcon("src/images/mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
         setIconImage(image.getImage());
 
     

@@ -22,16 +22,16 @@ class Board extends JPanel {
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
     // HIER NOCH QUELLE ZU DEN BILDERN EINFUEGEN - done
-    ImageIcon mineicon = new ImageIcon("images/mine.png");
-    ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
-    ImageIcon oneicon = new ImageIcon("images/icon1.png");
-    ImageIcon twoicon = new ImageIcon("images/icon2.png");
-    ImageIcon threeicon = new ImageIcon("images/icon3.png");
-    ImageIcon fouricon = new ImageIcon("images/icon4.png");
-    ImageIcon fiveicon = new ImageIcon("images/icon5.png");
-    ImageIcon sixicon = new ImageIcon("images/icon6.png");
-    ImageIcon sevenicon = new ImageIcon("images/icon7.png");
-    ImageIcon eighticon = new ImageIcon("images/icon8.png");
+    ImageIcon mineicon = new ImageIcon("src/images/mine.png");
+    ImageIcon flaggeicon = new ImageIcon("src/images/flagge.png");
+    ImageIcon oneicon = new ImageIcon("src/images/icon1.png");
+    ImageIcon twoicon = new ImageIcon("src/images/icon2.png");
+    ImageIcon threeicon = new ImageIcon("src/images/icon3.png");
+    ImageIcon fouricon = new ImageIcon("src/images/icon4.png");
+    ImageIcon fiveicon = new ImageIcon("src/images/icon5.png");
+    ImageIcon sixicon = new ImageIcon("src/images/icon6.png");
+    ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
+    ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
     String wontext = "You won the game!";
     String loosetext = "Game Over! You clicked on a mine.";
     
@@ -135,7 +135,7 @@ class Board extends JPanel {
                                     Statement stmt = null;                                    
                                     try {
                                         Class.forName("org.sqlite.JDBC");
-                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
                                         c.setAutoCommit(false);                                 
                                         stmt = c.createStatement();
                                         ResultSet rs = stmt.executeQuery( "SELECT COUNT(*) AS total FROM PLAYERS;" );
@@ -145,7 +145,7 @@ class Board extends JPanel {
                                         c.close();
 
                                         Class.forName("org.sqlite.JDBC");
-                                        c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+                                        c = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
                                         c.setAutoCommit(false);
                                         stmt = c.createStatement();
                                         String sql = "INSERT INTO PLAYERS (ID,NAME,TIME) " +
@@ -266,18 +266,18 @@ class Board extends JPanel {
 
     public void changedesign (String design) {
         if (design.equals("EM 2024")) {
-            mineicon = new ImageIcon("images/emmine.png");
-            flaggeicon = new ImageIcon("images/emflagge.png");
+            mineicon = new ImageIcon("src/images/emmine.png");
+            flaggeicon = new ImageIcon("src/images/emflagge.png");
             wontext = "Germany is European champion now! Congratulations!";
             loosetext = "Unfortunately the enemies were better, we lost again!";
         } else if (design.equals("Frankfurt School")) {
-            mineicon = new ImageIcon("images/fsmine.png");
-            flaggeicon = new ImageIcon("images/fsflagge.png");
+            mineicon = new ImageIcon("src/images/fsmine.png");
+            flaggeicon = new ImageIcon("src/images/fsflagge.png");
             wontext = "Congratiulations, you passed all your exams!";
             loosetext = "Unfortunately you got exmatriculated!";
         } else {
-            mineicon = new ImageIcon("images/mine.png");
-            flaggeicon = new ImageIcon("images/flagge.png");
+            mineicon = new ImageIcon("src/images/mine.png");
+            flaggeicon = new ImageIcon("src/images/flagge.png");
             
         }
     }
