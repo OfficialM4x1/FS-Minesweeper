@@ -45,7 +45,7 @@ class CompBoard extends JPanel {
     // Player 1 properties
     private String username1;
     private JLabel usernamLabel1;
-    private Timer timer1;
+    protected Timer timer1;
 
     // Player 2 properties
     private String username2;
@@ -254,6 +254,10 @@ class CompBoard extends JPanel {
      */
     public void setGameOver(boolean b) {
         this.gameOver = b;
+    }
+
+    public int setCurrentPlayer (int currentPlayer) {
+        return this.currentPlayer=currentPlayer;
     }
 
     /**

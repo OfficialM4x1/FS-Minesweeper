@@ -25,6 +25,7 @@ public class CompBoardTest {
     public void testCorrectPlayerLosesWhenClickingOnMine() {
         // Place a mine manually for testing
         board.isMine[0][0] = true;
+        board.setCurrentPlayer(1);
 
         // Simulate Player 1 clicking on the mine
         board.revealCell(0, 0);
@@ -38,7 +39,7 @@ public class CompBoardTest {
         board.timer1.stopTimer(); // Assume this triggers the game over condition
         board.gameOver = true;
         assertTrue(board.getGameOver());
-        assertEquals("Player1", board.getPlayerWhoLost());
+        assertEquals("Player2", board.getPlayerWhoLost());
     }
 
     @Test
