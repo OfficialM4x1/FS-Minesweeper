@@ -1,6 +1,6 @@
 @echo off
 setlocal
-
+rem If you are a windows user please use this file to start the game 
 rem Navigate to the directory where your JAR file and libraries are located
 cd /d %~dp0
 
