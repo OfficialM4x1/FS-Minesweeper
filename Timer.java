@@ -58,6 +58,10 @@ public class Timer extends JPanel {
     public void startTimer() {
         timer.start();
     }
+    
+    public int getSeconds() {
+        return secondsPassed;
+    }
 
    /**
     * stop the timer
