@@ -11,7 +11,7 @@ public class Timer extends JPanel {
     private boolean timerActive;
 
     /**
-     * 
+     * Constructor of the timer
      * @param username inputted username by the player
      * @param b Competitive board
      */
@@ -46,7 +46,7 @@ public class Timer extends JPanel {
     }
 
     /**
-     * 
+     * Method to activate the timer
      * @param b set timer active
      */
     public void setTimerActive(boolean b) {
@@ -71,7 +71,7 @@ public class Timer extends JPanel {
     }
 
   /**
-   * 
+   * Method to set the timer
    * @param secondsPassed number of seconds at which the starttime will begin
    */
     public void setTimer(int secondsPassed) { //set the starttime in seconds 

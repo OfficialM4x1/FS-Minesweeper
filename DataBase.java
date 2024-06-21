@@ -1,11 +1,15 @@
 import java.sql.*;
 
 public class DataBase {
+   /**
+    * This class exists for testing purposes only. Here we tried different test cases
+    * @param args
+    */
    public static void main( String args[] ) {
       
 
-                                    Connection c = null;
-                                    Statement stmt = null;                                    
+      Connection c = null;
+      Statement stmt = null;                                    
                                                                
       try {
          Class.forName("org.sqlite.JDBC");

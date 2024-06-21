@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+//The game class represents the JFrame which opens after you selected your gamemode
 public class Game extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
     ImageIcon hinticon = new ImageIcon("images/hint.png");
@@ -10,11 +11,11 @@ public class Game extends JFrame {
     protected Board board;
 
     /**
-     * 
-     * @param ROWS
-     * @param COLS
-     * @param MINES
-     * @param design
+     * The class game, which gets called from the main frame creates the game. The following is the constructor of the game
+     * @param ROWS amount of rows
+     * @param COLS amount of columns
+     * @param MINES amount of mines
+     * @param design the design you selected
      */
     public Game(int ROWS, int COLS, int MINES, String design) {
 
@@ -25,14 +26,10 @@ public class Game extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null); 
         //change little icon of window 
-        ImageIcon image = new ImageIcon("images/mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
+        ImageIcon image = new ImageIcon("images/mine.png"); //Little Icon on the top left bar
         setIconImage(image.getImage());
-
-    
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-
-        
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
         board = new Board(ROWS, COLS, MINES, design);
@@ -46,19 +43,19 @@ public class Game extends JFrame {
         leftPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(leftPanel, BorderLayout.WEST);
 
-
+        //The right panel
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.WHITE);
         rightPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(rightPanel, BorderLayout.EAST);
         GridLayout c = new GridLayout(0,1);
-            c.setVgap(10);
-            rightPanel.setLayout(c);
-
+        c.setVgap(10);
+        rightPanel.setLayout(c);
         JPanel designpanel = new JPanel();
         designpanel.setBackground(Color.WHITE);
         rightPanel.add(designpanel);
 
+        //Back to menu button
         JButton backtomenu = new JButton();
         rightPanel.add(backtomenu);
         backtomenu.setIcon(menuicon);
@@ -66,7 +63,7 @@ public class Game extends JFrame {
         backtomenu.setContentAreaFilled(false);
         backtomenu.setBorderPainted(false);
         
-
+        //ActionListener for the back to menu button
         backtomenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,6 +78,7 @@ public class Game extends JFrame {
         menutext.setBackground(Color.WHITE);
         rightPanel.add(menutext);
 
+        //Give a hint button
         JButton giveahint = new JButton();
         rightPanel.add(giveahint);
         giveahint.setIcon(hinticon);
@@ -88,7 +86,7 @@ public class Game extends JFrame {
         giveahint.setContentAreaFilled(false);
         giveahint.setBorderPainted(false);
 
-        //hint button that reveals on cell 
+        //ActionListener for the hint button that reveals on cell 
         giveahint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -121,6 +119,7 @@ public class Game extends JFrame {
         hinttext.setBackground(Color.WHITE);
         rightPanel.add(hinttext);        
 
+        //Show the tutorial button
         JButton showtutorial = new JButton();
         rightPanel.add(showtutorial);
         showtutorial.setIcon(tutorialicon);
@@ -128,6 +127,7 @@ public class Game extends JFrame {
         showtutorial.setContentAreaFilled(false);
         showtutorial.setBorderPainted(false);
         
+        //ActionListener for the show the tutorial button
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
+
 class Board extends JPanel {
 
     //Intilize content game board 
@@ -20,7 +21,8 @@ class Board extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
-    // HIER NOCH QUELLE ZU DEN BILDERN EINFUEGEN - done
+
+    //Creating different ImageIcons for later use
     ImageIcon mineicon = new ImageIcon("images/mine.png");
     ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
     ImageIcon oneicon = new ImageIcon("images/icon1.png");
@@ -34,16 +36,17 @@ class Board extends JPanel {
     String wontext = "You won the game!";
     String loosetext = "Game Over! You clicked on a mine.";
     
+    //String for the user name and initialization of the timer
     String username;
     JLabel usernamLabel;
     Timer timer = new Timer(username, null);
 
     /**
      * Constructor of a board
-     *
-     * @param rows   depending on difficulty
-     * @param cols   depending on difficulty
-     * @param mines  pass the number of mines
+     * @param rows   depending on difficulty, this contains the amount of rows
+     * @param cols   depending on difficulty, this contains the amount of columns
+     * @param mines  pass the number of mines, this contains the amount of mines
+     * @param design this contains the selected design
      * Constructor of a board starting with a non-gameover game
      */
     public Board(int rows, int cols, int mines, String design) {
@@ -52,6 +55,7 @@ class Board extends JPanel {
         this.mines = mines;
         this.gameOver = false;
 
+        //Calls method to switch the design
         changedesign(design);
 
         /**
@@ -180,7 +184,7 @@ class Board extends JPanel {
     }
 
     /**
-     * 
+     * Method to check if a field is a mine
      * @param row row number
      * @param col column number
      * @return true or false if a mine is placed on the specified field
@@ -190,7 +194,7 @@ class Board extends JPanel {
     }
 
     /**
-     * 
+     * Method to check if a field is revealed
      * @param row row number
      * @param col column number 
      * @return true or false if a mine is revealed on the specified field
@@ -199,7 +203,7 @@ class Board extends JPanel {
         return isRevealed[row][col];
     }
     /**
-     * 
+     * Method to set the username, this method is called after you enter the username "in" the class MainFrame
      * @param username2 inputted name by the user at the beginning of the game
      */
     public void setusername(String username2) {
@@ -207,12 +211,16 @@ class Board extends JPanel {
         username = username2;
     }
 
+    /**
+     * Method to check if a field is flaged
+     * @return returns ture or false, depending if the field is flaged
+     */
     public boolean[][] getisFlaged() {
         return isFlaged;
     }
 
     /**
-     * 
+     * Method to check if the game is completely solved
      * @param row number of rows
      * @param col number of columns
      * @return true if all non-mine cells are revealed, false otherwise
@@ -230,7 +238,7 @@ class Board extends JPanel {
     }
 
     /**
-     * 
+     * Check the amount of the correctly solved mines to check if the game is solved correctly
      * @param row number of rows
      * @param col number of columns
      * @return true if all flagged cells are mines and one mine is left, false otherwise
@@ -263,6 +271,10 @@ class Board extends JPanel {
         }
     }
 
+    /**
+     * Method to change the design of the game
+     * @param design contains the slected design
+     */
     public void changedesign (String design) {
         if (design.equals("EM 2024")) {
             mineicon = new ImageIcon("images/emmine.png");
@@ -282,7 +294,6 @@ class Board extends JPanel {
     }
     /**
      * Reveals the cell at the specified location
-     * 
      * @param row row number
      * @param col column number
      */
@@ -301,7 +312,6 @@ class Board extends JPanel {
             JOptionPane.showMessageDialog(this, loosetext);
             gameOver = true;
             timer.stopTimer();
-
             revealAllMines();
             
         } else {
@@ -362,7 +372,6 @@ class Board extends JPanel {
 
     /**
      * Checks how many mines are around a field
-     * 
      * @param row row number
      * @param col column number
      * @return the number of mines adjacent to the specified field
@@ -394,8 +403,8 @@ class Board extends JPanel {
     }
 
     /**
-     * 
-     * @return getter for gameOver
+     * Checks if the game is gameover
+     * @return returns true or false depending if the game is gameover
      */
     public boolean getGameOver() {
         return this.gameOver;
@@ -416,12 +425,9 @@ class Board extends JPanel {
         return this.mines;
     }
 
-    //winning function
-
-    //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
-        /**
+    
+    /**
      * Colors the square at the specified location
-     * 
      * @param i row number
      * @param j column number 
      * @param revealed true if the cell is revealed, false otherwise
