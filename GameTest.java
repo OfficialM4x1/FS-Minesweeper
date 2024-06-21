@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
 
 public class GameTest {
-    public Game game = new Game(5, 5, 5);;
+    public Game game = new Game(5, 5, 5, "Standard");;
 
     @Test
     public void testMenuIconExists() {

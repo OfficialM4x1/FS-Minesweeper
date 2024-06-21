@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 public class BoardTest {
     @Test
     public void testBoardInitialization() {
-        Board board = new Board(10, 10, 10);
+        Board board = new Board(10, 10, 10, "Standard");
         assertEquals(10, board.getRows());
         assertEquals(10, board.getCols());
         assertEquals(10, board.getMines());
@@ -17,7 +17,7 @@ public class BoardTest {
 
     @Test
     public void testPlaceMines() {
-        Board board = new Board(10, 10, 10);
+        Board board = new Board(10, 10, 10, "Standard");
         int mineCount = 0;
         for (int i = 0; i < board.getRows(); i++) {
             for (int j = 0; j < board.getCols(); j++) {
@@ -31,14 +31,14 @@ public class BoardTest {
 
     @Test
     public void testRevealCell() {
-        Board board = new Board(10, 10, 10);
+        Board board = new Board(10, 10, 10, "Standard");
         board.revealCell(0, 0);
         assertTrue(board.checkrevealed(0, 0));
     }
 
     @Test
     public void testGameOverOnMine() {
-        Board board = new Board(10, 10, 10);
+        Board board = new Board(10, 10, 10, "Standard");
         // Find a mine to click on
         int mineRow = -1, mineCol = -1;
         for (int i = 0; i < board.getRows(); i++) {
@@ -60,14 +60,14 @@ public class BoardTest {
 
     @Test
     public void testSetUsername() {
-        Board board = new Board(10, 10, 10);
+        Board board = new Board(10, 10, 10, "Standard");
         board.setusername("TestUser");
         assertEquals("TestUser", board.usernamLabel.getText());
     }
 
     @Test
     public void testSolved() {
-        Board board = new Board(3, 3, 1);
+        Board board = new Board(3, 3, 1, "Standard");
         for (int i = 0; i < board.getRows(); i++) {
             for (int j = 0; j < board.getCols(); j++) {
                 if (!board.checkmine(i, j)) {
@@ -80,7 +80,7 @@ public class BoardTest {
 
     @Test
     public void testSolvedMines() {
-        Board board = new Board(3, 3, 1);
+        Board board = new Board(3, 3, 1, "Standard");
 
         // Get the positions of the mines
         boolean[][] isMine = new boolean[board.getRows()][board.getCols()];
