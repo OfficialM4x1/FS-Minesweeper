@@ -35,6 +35,7 @@ public class Timer extends JPanel {
                         if (secondsPassed ==0) {
                             stopTimer();
                             JOptionPane.showMessageDialog(null, username+" you lost!");
+                            b.revealAllMines();                         
                             b.setGameOver(true);
                         }
                     }
