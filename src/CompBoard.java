@@ -29,19 +29,20 @@ class CompBoard extends JPanel {
     private JPanel topBoardPanel;
     private JPanel bottomBoardPanel;
     private JPanel bottomPanel;
-    ImageIcon mineicon = new ImageIcon("images/mine.png");
-    ImageIcon flaggeicon = new ImageIcon("images/flagge.png");
-    ImageIcon oneicon = new ImageIcon("images/icon1.png");
-    ImageIcon twoicon = new ImageIcon("images/icon2.png");
-    ImageIcon threeicon = new ImageIcon("images/icon3.png");
-    ImageIcon fouricon = new ImageIcon("images/icon4.png");
-    ImageIcon fiveicon = new ImageIcon("images/icon5.png");
-    ImageIcon sixicon = new ImageIcon("images/icon6.png");
-    ImageIcon sevenicon = new ImageIcon("images/icon7.png");
-    ImageIcon eighticon = new ImageIcon("images/icon8.png");
+    ImageIcon mineicon = new ImageIcon("src/images/mine.png");
+    ImageIcon flaggeicon = new ImageIcon("src/images/flagge.png");
+    ImageIcon oneicon = new ImageIcon("src/images/icon1.png");
+    ImageIcon twoicon = new ImageIcon("src/images/icon2.png");
+    ImageIcon threeicon = new ImageIcon("src/images/icon3.png");
+    ImageIcon fouricon = new ImageIcon("src/images/icon4.png");
+    ImageIcon fiveicon = new ImageIcon("src/images/icon5.png");
+    ImageIcon sixicon = new ImageIcon("src/images/icon6.png");
+    ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
+    ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
 
     private int currentPlayer;
     private Random random = new Random();
+    private int counterRevealedcells;
 
     // Player 1 properties
     private String username1;
@@ -69,6 +70,7 @@ class CompBoard extends JPanel {
         this.username1 = username1;
         this.username2 = username2;
         this.gameOver = false;
+        this.counterRevealedcells = 0;
         
         // Setup info panel for game with timer and usernames
         topBoardPanel = new JPanel();
@@ -80,7 +82,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(20); // Set start time 
+        timer1.setTimer(240); // Set start time 
         topBoardPanel.add(timer1);
 
         // Player 2 setup
@@ -88,7 +90,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(20); // Set start time 
+        timer2.setTimer(240); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -140,6 +142,10 @@ class CompBoard extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             if (!gameOver) {
+                                if (counterRevealedcells%20 == 0) {
+                                    timer1.setTimerStep();
+                                    timer2.setTimerStep();
+                                }
                                 // Switch between players and start/stop the timer
                                 if (!isRevealed[row][col]) {
                                     if (currentPlayer == 1) {
@@ -154,6 +160,7 @@ class CompBoard extends JPanel {
                                 }
                                 // Normal revealing of cell
                                 revealCell(row, col);
+                                counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();
@@ -441,5 +448,9 @@ class CompBoard extends JPanel {
      */
     private void colourSquare(int i, int j, boolean revealed) {
         buttons[i][j].setBackground(Color.LIGHT_GRAY);       
+    }
+    
+    public void setCurrentPlayer(int i) {
+        this.currentPlayer = i;
     }
 }

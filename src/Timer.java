@@ -10,6 +10,7 @@ public class Timer extends JPanel {
     private int secondsPassed;
     private boolean comp;
     private boolean timerActive;
+    private int timerStep; 
 
     /**
      * Constructor of the timer
@@ -20,6 +21,7 @@ public class Timer extends JPanel {
         timerLabel = new JLabel("00:00");
         add(timerLabel);
         timerActive = true;
+        this.timerStep = 1;
 
         // Timer für das Aktualisieren des Timer-Labels erstellen
         timer = new javax.swing.Timer(1000, new ActionListener() {
@@ -29,7 +31,7 @@ public class Timer extends JPanel {
                 if (timerActive) {
                     //when it is competitive game the timer counts down and shows a msgBox when the timer is 0
                     if (comp) {
-                        secondsPassed--;
+                        secondsPassed = secondsPassed - timerStep;
                         if (secondsPassed ==0) {
                             stopTimer();
                             JOptionPane.showMessageDialog(null, username+" you lost!");
@@ -44,6 +46,13 @@ public class Timer extends JPanel {
                 }
             }
         });
+    }
+    /**
+     * 
+     * @param i is the integer how fast the timer counts down
+     */
+    public void setTimerStep() {
+        this.timerStep++;
     }
 
     /**
