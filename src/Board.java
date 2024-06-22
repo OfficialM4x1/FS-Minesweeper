@@ -282,7 +282,7 @@ class Board extends JPanel {
             flaggeicon = new ImageIcon("src/images/emflagge.png");
             wontext = "Great Job! A stunishing 7:1 win against Brazil!";
             loosetext = "Red Card! You were sent off field!";
-        } else if (design.equals("src/Frankfurt School")) {
+        } else if (design.equals("Frankfurt School")) {
             mineicon = new ImageIcon("src/images/fsmine.png");
             flaggeicon = new ImageIcon("src/images/fsflagge.png");
             wontext = "You got the internship!";
