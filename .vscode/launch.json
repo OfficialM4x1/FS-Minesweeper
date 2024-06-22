@@ -9,6 +9,13 @@
             "name": "MainFrame",
             "request": "launch",
             "mainClass": "src.MainFrame",
+            "projectName": "FS-Minesweeper_e6a6d26f"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "src.MainFrame",
             "projectName": "FS-Minesweeper_91154536"
         },
         {
