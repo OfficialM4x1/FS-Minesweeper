@@ -81,6 +81,10 @@ public class Timer extends JPanel {
         timer.stop();
     }
 
+    public void addTime() {
+        this.secondsPassed = this.secondsPassed + 2;
+    }
+
   /**
    * Method to set the timer
    * @param secondsPassed number of seconds at which the starttime will begin

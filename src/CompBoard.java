@@ -143,7 +143,7 @@ class CompBoard extends JPanel {
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             if (!gameOver && !isFlaged[row][col]) {
-                                if (counterRevealedcells%20 == 0) {
+                                if (counterRevealedcells >= 100) {
                                     timer1.setTimerStep();
                                     timer2.setTimerStep();
                                 }
@@ -151,10 +151,12 @@ class CompBoard extends JPanel {
                                 if (!isRevealed[row][col]) {
                                     if (currentPlayer == 1) {
                                         timer1.stopTimer();
+                                        timer1.addTime();
                                         timer2.startTimer();
                                         currentPlayer = 2;
                                     } else {
                                         timer2.stopTimer();
+                                        timer2.addTime();
                                         timer1.startTimer();
                                         currentPlayer = 1;
                                     }
