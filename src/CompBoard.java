@@ -142,7 +142,7 @@ class CompBoard extends JPanel {
                 buttons[i][j].addMouseListener(new MouseAdapter() { // Mouse listener to differentiate between left and right click on mouse
                     public void mouseClicked(MouseEvent e) {
                         if (SwingUtilities.isLeftMouseButton(e)) {
-                            if (!gameOver) {
+                            if (!gameOver && !isFlaged[row][col]) {
                                 if (counterRevealedcells%20 == 0) {
                                     timer1.setTimerStep();
                                     timer2.setTimerStep();
