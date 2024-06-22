@@ -119,13 +119,14 @@ public class CompGame extends JFrame {
             }
         });
 
+/*
         JPanel hinttext = new JPanel();
         JLabel labelhint = new JLabel("Get a hint");
         labelhint.setFont(new Font("Verdana", Font.PLAIN, 16)); 
         hinttext.add(labelhint);
         hinttext.setBackground(Color.WHITE);
         rightPanel.add(hinttext);        
-
+*/
         JButton showtutorial = new JButton();
         rightPanel.add(showtutorial);
         showtutorial.setIcon(tutorialicon);

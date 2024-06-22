@@ -264,10 +264,6 @@ class CompBoard extends JPanel {
         this.gameOver = b;
     }
 
-    public int setCurrentPlayer (int currentPlayer) {
-        return this.currentPlayer=currentPlayer;
-    }
-
     /**
      * Check if the game is solved by revealing all non-mine cells.
      * 

@@ -25,10 +25,10 @@ public class MainFrame extends JFrame implements ActionListener {
     private JButton competitiveButton;
 
     //Here we define the icons for the main menu, but only the icons that don't change when switching the design
-    private ImageIcon advertiseicon = new ImageIcon("images/advertiseicon.png");
-    private ImageIcon firsticon = new ImageIcon("images/first.png");
-    private ImageIcon secondicon = new ImageIcon("images/second.png");
-    private ImageIcon thirdicon = new ImageIcon("images/third.png");
+    private ImageIcon advertiseicon = new ImageIcon("src/images/advertiseicon.png");
+    private ImageIcon firsticon = new ImageIcon("src/images/first.png");
+    private ImageIcon secondicon = new ImageIcon("src/images/second.png");
+    private ImageIcon thirdicon = new ImageIcon("src/images/third.png");
 
     String[] options = {"Standard", "EM 2024", "Frankfurt School"}; //This is the String that contains keys to select the different designs, which is later used in the JComboBox
     JComboBox<String> comboBox = new JComboBox<>(options); //JComboBox to select the design for the game in the main menu
@@ -186,15 +186,15 @@ public class MainFrame extends JFrame implements ActionListener {
 
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+            c = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
             c.setAutoCommit(false);
             stmt = c.createStatement();
             Class.forName("org.sqlite.JDBC");
-            c2 = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+            c2 = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
             c2.setAutoCommit(false);
             stmt2 = c2.createStatement();
             Class.forName("org.sqlite.JDBC");
-            c3 = DriverManager.getConnection("jdbc:sqlite:leaderboard.db");
+            c3 = DriverManager.getConnection("jdbc:sqlite:src/leaderboard.db");
             c3.setAutoCommit(false);
             stmt3 = c3.createStatement();
             ResultSet rs = stmt.executeQuery( "SELECT * FROM PLAYERS;");
