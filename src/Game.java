@@ -1,47 +1,40 @@
+package src;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-
-
-public class CompGame extends JFrame {
+//The game class represents the JFrame which opens after you selected your gamemode
+public class Game extends JFrame {
     ImageIcon menuicon = new ImageIcon("images/menu.png");
     ImageIcon hinticon = new ImageIcon("images/hint.png");
     ImageIcon tutorialicon = new ImageIcon("images/tutorial.png");
-    private CompBoard board;
-    protected String nameinput1;
-    protected String nameinput2;
+    protected Board board;
 
     /**
-     * Compgame creates a compboard and design a game for the two players as a competitive game
-     * @param ROWS number of rows on the board
-     * @param COLS number of columns on the bord
-     * @param MINES number of mines you want to place on the board
+     * The class game, which gets called from the main frame creates the game. The following is the constructor of the game
+     * @param ROWS amount of rows
+     * @param COLS amount of columns
+     * @param MINES amount of mines
+     * @param design the design you selected
      */
-    public CompGame(int ROWS, int COLS, int MINES) {
- 
+    public Game(int ROWS, int COLS, int MINES, String design) {
+
         //here you can adjust the frame how you like 
-        setTitle("Minesweeper COMPETITIVE");
+        String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
+        setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null); 
         //change little icon of window 
-        ImageIcon image = new ImageIcon("images/mine.png"); //hier könnt ihr auch nochmal ein tolles Bild raus suchen für das kleine Icon oben links
+        ImageIcon image = new ImageIcon("images/mine.png"); //Little Icon on the top left bar
         setIconImage(image.getImage());
-
-        //player names
-        nameinput1 = JOptionPane.showInputDialog(board, "Player 1, please enter your name:"); //user 1
-        nameinput2 = JOptionPane.showInputDialog(board, "Player 2, please enter your name:"); //user 2
-        
-        //lowest panel where all the other panels sit on
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
-
-        
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
-        board = new CompBoard(ROWS, COLS, MINES, nameinput1, nameinput2);
+        board = new Board(ROWS, COLS, MINES, design);
+        board.setusername(nameinput);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
 
@@ -51,19 +44,19 @@ public class CompGame extends JFrame {
         leftPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(leftPanel, BorderLayout.WEST);
 
-
+        //The right panel
         JPanel rightPanel = new JPanel();
         rightPanel.setBackground(Color.WHITE);
         rightPanel.setPreferredSize(new Dimension(350, 0));
         mainPanel.add(rightPanel, BorderLayout.EAST);
         GridLayout c = new GridLayout(0,1);
-            c.setVgap(10);
-            rightPanel.setLayout(c);
-
+        c.setVgap(10);
+        rightPanel.setLayout(c);
         JPanel designpanel = new JPanel();
         designpanel.setBackground(Color.WHITE);
         rightPanel.add(designpanel);
 
+        //Back to menu button
         JButton backtomenu = new JButton();
         rightPanel.add(backtomenu);
         backtomenu.setIcon(menuicon);
@@ -71,7 +64,7 @@ public class CompGame extends JFrame {
         backtomenu.setContentAreaFilled(false);
         backtomenu.setBorderPainted(false);
         
-        
+        //ActionListener for the back to menu button
         backtomenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,6 +79,7 @@ public class CompGame extends JFrame {
         menutext.setBackground(Color.WHITE);
         rightPanel.add(menutext);
 
+        //Give a hint button
         JButton giveahint = new JButton();
         rightPanel.add(giveahint);
         giveahint.setIcon(hinticon);
@@ -93,6 +87,7 @@ public class CompGame extends JFrame {
         giveahint.setContentAreaFilled(false);
         giveahint.setBorderPainted(false);
 
+        //ActionListener for the hint button that reveals on cell 
         giveahint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -125,6 +120,7 @@ public class CompGame extends JFrame {
         hinttext.setBackground(Color.WHITE);
         rightPanel.add(hinttext);        
 
+        //Show the tutorial button
         JButton showtutorial = new JButton();
         rightPanel.add(showtutorial);
         showtutorial.setIcon(tutorialicon);
@@ -132,16 +128,17 @@ public class CompGame extends JFrame {
         showtutorial.setContentAreaFilled(false);
         showtutorial.setBorderPainted(false);
         
+        //ActionListener for the show the tutorial button
         showtutorial.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            String longMessage = "Welcome to the local Minesweeper Competitive Mode!\r\n" + //
+            String longMessage = "Welcome to the Minesweeper Classic!\r\n" + //
                                  "\r\n" + //
-                                 "This mode combines the familiar gameplay with the thrill of competing against your friends. The objective of every player is to reveal all fields without setting off any explosives. The renowned gameplay and rules of the classic game remain unchanged. However, in the two player mode they were expanded by the following rules:\r\n" + //
+                                 "The notorious retro game where your objective is to reveal all fields without setting off any explosives. First introduced in 1989, this classic has hardly lost its charm and continues to enjoy great popularity. The renowned gameplay and rules of the classic game remain unchanged to this day. However, just in case you are not familiar with them, here is a quick tutorial:\r\n" + //
                                 "\r\n" + //
-                                "You can alternately click on the fields to reveal them. Both players try to solve the game in the given time. If the time is up or you click on a bomb you loose.\r\n" + //
+                                "Picture a grid of squares, some concealing mines and others safe to uncover. Your objective is to reveal all fields of the minefield that are not bombs. You can make a guess by clicking on a field, uncovering either a mine or a number. The latter indicating how many mines lurk in adjacent squares. To mark potential mines, simply right-click to place a flag. This will help you remembering the mines you think you have uncovered. But be cautious! If you hit a mine, the game is over. Success hinges on strategic uncovering - start with less risky areas and progress logically. By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares.\r\n" + //
                                 "\r\n" + //
-                                "The combination of speed and accuracy is key to defeat your friends and mastering this version of the notorious classic. So, with these guidelines, dive in and enjoy the challenge of the new Minesweeper Competitive Mode!\r\n" + //
+                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!\r\n" + //
                                  "";
             JTextArea textArea = new JTextArea(20, 50);
             JScrollPane scrollPane = new JScrollPane(textArea);
@@ -163,13 +160,5 @@ public class CompGame extends JFrame {
 
         add(mainPanel);
         setVisible(true);
-    }
-
-    public String getNameinput1() {
-        return nameinput1;
-    }
-
-    public String getNameinput2() {
-        return nameinput2;
     }
 }

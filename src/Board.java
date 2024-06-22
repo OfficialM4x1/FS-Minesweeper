@@ -1,3 +1,4 @@
+package src;
 //@author class Silas Abler
 import com.sun.source.doctree.ThrowsTree;
 import java.awt.*;

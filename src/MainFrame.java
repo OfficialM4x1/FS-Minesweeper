@@ -1,3 +1,4 @@
+package src;
 /**
  * Various imports e.g. ActionListener for our buttons and SQL to support the interaction with our Database in SQLite
  */
