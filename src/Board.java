@@ -321,6 +321,7 @@ class Board extends JPanel {
             JOptionPane.showMessageDialog(this, loosetext);
             gameOver = true;
             timer.stopTimer();
+            audio.stopSound();
             revealAllMines();
             
         } else {
