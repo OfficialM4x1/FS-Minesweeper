@@ -87,6 +87,7 @@ public class CompGame extends JFrame {
         menutext.setBackground(Color.WHITE);
         rightPanel.add(menutext);
 
+/*
         JButton giveahint = new JButton();
         rightPanel.add(giveahint);
         giveahint.setIcon(hinticon);
@@ -119,7 +120,7 @@ public class CompGame extends JFrame {
             }
         });
 
-/*
+
         JPanel hinttext = new JPanel();
         JLabel labelhint = new JLabel("Get a hint");
         labelhint.setFont(new Font("Verdana", Font.PLAIN, 16)); 
