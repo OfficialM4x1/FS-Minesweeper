@@ -1,8 +1,9 @@
 package src;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 import java.util.Random;
+import javax.swing.*;
+import src.Timer;
 
 /**
  * The CompBoard class represents a Minesweeper game board for a competitive game with two players.
@@ -83,7 +84,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(120); // Set start time 
+        timer1.setTimer(30); // Set start time 
         topBoardPanel.add(timer1);
 
         // Player 2 setup
@@ -91,7 +92,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(120); // Set start time 
+        timer2.setTimer(30); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));

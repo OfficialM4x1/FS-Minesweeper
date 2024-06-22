@@ -82,7 +82,7 @@ public class Timer extends JPanel {
     }
 
     public void addTime() {
-        this.secondsPassed = this.secondsPassed + 2;
+        this.secondsPassed = this.secondsPassed + 3;
     }
 
   /**
