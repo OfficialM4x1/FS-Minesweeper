@@ -8,6 +8,48 @@
             "type": "java",
             "name": "MainFrame",
             "request": "launch",
+            "mainClass": "src.MainFrame",
+            "projectName": "FS-Minesweeper_e6a6d26f"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "src.MainFrame",
+            "projectName": "FS-Minesweeper_91154536"
+        },
+        {
+            "type": "java",
+            "name": "DataBase",
+            "request": "launch",
+            "mainClass": "DataBase",
+            "projectName": "FS-Minesweeper_e6a6d26f"
+        },
+        {
+            "type": "java",
+            "name": "DataBase",
+            "request": "launch",
+            "mainClass": "DataBase",
+            "projectName": "FS-Minesweeper_3d90f64"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "MainFrame",
+            "projectName": "FS-Minesweeper_3d90f64"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
+            "mainClass": "MainFrame",
+            "projectName": "FS-Minesweeper_405db5f8"
+        },
+        {
+            "type": "java",
+            "name": "MainFrame",
+            "request": "launch",
             "mainClass": "MainFrame",
             "projectName": "FS-Minesweeper_24f48a77"
         },
