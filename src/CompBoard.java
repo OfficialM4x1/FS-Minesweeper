@@ -82,7 +82,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(10); // Set start time 
+        timer1.setTimer(120); // Set start time 
         topBoardPanel.add(timer1);
 
         // Player 2 setup
@@ -90,7 +90,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(10); // Set start time 
+        timer2.setTimer(120); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -169,7 +169,7 @@ class CompBoard extends JPanel {
                                 }
                             }
                         } else if (SwingUtilities.isRightMouseButton(e)) {
-                            if (!gameOver) {
+                            if (!gameOver && !isRevealed[row][col]) {
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();

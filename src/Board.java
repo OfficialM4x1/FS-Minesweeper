@@ -130,7 +130,7 @@ class Board extends JPanel {
                         }
                         // Ability to flag mines with a right click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
-                            if (!gameOver) {
+                            if (!gameOver && !isRevealed[row][col]) {
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;
