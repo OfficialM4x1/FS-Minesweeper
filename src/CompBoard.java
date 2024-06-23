@@ -44,7 +44,6 @@ class CompBoard extends JPanel {
     private int currentPlayer;
     private Random random = new Random();
     private int counterRevealedcells;
-    AudioClass music = new AudioClass();
 
     // Player 1 properties
     private String username1;

@@ -42,8 +42,6 @@ class Board extends JPanel {
     JLabel usernamLabel;
     Timer timer = new Timer(username, null);
 
-    AudioClass audio = new AudioClass();
-
     /**
      * Constructor of a board
      * @param rows   depending on difficulty, this contains the amount of rows
@@ -99,10 +97,6 @@ class Board extends JPanel {
         placeMines();
         timer.startTimer();
 
-        //play background music
-        //source for the music https://pixabay.com/de/music/search/free%20songs/
-        audio.playSound("src/Audio/chill-mood-178691.wav");
-
         /**
          * Loop through the rows
          */
@@ -131,7 +125,6 @@ class Board extends JPanel {
                                     JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;
                                     timer.stopTimer();
-                                    audio.stopSound();
                                 }
                             }
                         }
@@ -142,7 +135,6 @@ class Board extends JPanel {
                                     JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;
                                     timer.stopTimer();
-                                    audio.stopSound();
                                     Connection c = null;
                                     Statement stmt = null;                                    
                                     try {
@@ -321,7 +313,6 @@ class Board extends JPanel {
             JOptionPane.showMessageDialog(this, loosetext);
             gameOver = true;
             timer.stopTimer();
-            audio.stopSound();
             revealAllMines();
             
         } else {

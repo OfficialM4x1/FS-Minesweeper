@@ -14,6 +14,9 @@ import java.sql.*;
  * The MainFrame represents our JFrame for the menu
  */
 public class MainFrame extends JFrame implements ActionListener {
+    //add an AudioClass music for background music
+    AudioClass music = new AudioClass();
+
     //We initially used a CardLayout to build different styled menus. In the cardLayout you are able to switch between different Layouts. Unforunately time wasn't in our favour, but we left it to further enhance our program (enabler)
     private CardLayout cardLayout;
     private JPanel cardPanel;
@@ -172,6 +175,10 @@ public class MainFrame extends JFrame implements ActionListener {
         comboBox.setFont(standardfont);
         comboBox.setForeground(Color.WHITE);
         middlemenuoutside.add(comboBox);
+
+        //play background music
+        //source for the music https://pixabay.com/de/music/search/free%20songs/
+        music.playSound("src/Audio/chill-mood-178691.wav");
 
         //Here starts the part for the database
         //This part repeats three times, which is due to the fact that SQLite only supports forward only result sets. By choosing another technology stack we would have implemented it "smarter" :)
