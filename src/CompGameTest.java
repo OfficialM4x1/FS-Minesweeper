@@ -8,7 +8,7 @@ public class CompGameTest {
     @Test
     public void testTwoUsersCreated() {
         // Create the game with predefined usernames
-        CompGame game = new CompGame(5, 5, 5);
+        CompGame game = new CompGame(5, 5, 5, "Standard");
         
         // Verify that the usernames are correctly set
         assertEquals("Player1", game.getNameinput1());

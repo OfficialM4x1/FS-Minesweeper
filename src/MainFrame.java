@@ -344,7 +344,7 @@ public class MainFrame extends JFrame implements ActionListener {
         } else if (e.getSource() == hardButton) {
             Game mygame3 = new Game(32, 32, 150, selectedValue);
         } else if (e.getSource() == competitiveButton){
-            CompGame compgame = new CompGame(18, 18, 35);
+            CompGame compgame = new CompGame(18, 18, 35, selectedValue);
         }
     }
 

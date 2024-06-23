@@ -20,7 +20,7 @@ public class CompGame extends JFrame {
      * @param COLS number of columns on the bord
      * @param MINES number of mines you want to place on the board
      */
-    public CompGame(int ROWS, int COLS, int MINES) {
+    public CompGame(int ROWS, int COLS, int MINES, String design) {
  
         //here you can adjust the frame how you like 
         setTitle("Minesweeper COMPETITIVE");
@@ -42,7 +42,7 @@ public class CompGame extends JFrame {
         
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
-        board = new CompBoard(ROWS, COLS, MINES, nameinput1, nameinput2);
+        board = new CompBoard(ROWS, COLS, MINES, nameinput1, nameinput2, design);
         gamePanel.add(board, BorderLayout.CENTER);
         mainPanel.add(gamePanel, BorderLayout.CENTER);
 

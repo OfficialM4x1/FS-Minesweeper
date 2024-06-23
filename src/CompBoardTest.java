@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public class CompBoardTest {
-    public CompBoard board = new CompBoard(5, 5, 5, "Player1", "Player2");
+    public CompBoard board = new CompBoard(5, 5, 5, "Player1", "Player2", "Standard");
 
     @Test
     public void testTimerSwitchesBetweenPlayers() {
