@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//basic timer with label that counts upwards is created with ChatGPT, the addional functionality is all handmade
+//basic timer with label that counts upwards is created with ChatGPT, the addional functionality is all hand-made
 public class Timer extends JPanel {
     private JLabel timerLabel;
     private javax.swing.Timer timer;
@@ -81,10 +81,6 @@ public class Timer extends JPanel {
         timer.stop();
     }
 
-    public void addTime() {
-        this.secondsPassed = this.secondsPassed + 2;
-    }
-
   /**
    * Method to set the timer
    * @param secondsPassed number of seconds at which the starttime will begin
@@ -106,5 +102,10 @@ public class Timer extends JPanel {
         int seconds = secondsPassed % 60;
         String timeString = String.format("%02d:%02d", minutes, seconds);
         timerLabel.setText(timeString);
+    }
+
+    public void addTime() {
+        this.secondsPassed = this.secondsPassed + 4;
+        updateTimerLabel();
     }
 }

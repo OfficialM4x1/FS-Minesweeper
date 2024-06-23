@@ -1,8 +1,9 @@
 package src;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
 import java.util.Random;
+import javax.swing.*;
+import src.Timer;
 
 /**
  * The CompBoard class represents a Minesweeper game board for a competitive game with two players.
@@ -39,11 +40,15 @@ class CompBoard extends JPanel {
     ImageIcon sixicon = new ImageIcon("src/images/icon6.png");
     ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
     ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
+    String wontext = "You won the game!";
+    String loosetext = "Game Over! You clicked on a mine.";
+
+    //Sounds for the game
+    AudioClass sound = new AudioClass();
 
     private int currentPlayer;
     private Random random = new Random();
     private int counterRevealedcells;
-    AudioClass audio = new AudioClass();
 
     // Player 1 properties
     private String username1;
@@ -64,7 +69,7 @@ class CompBoard extends JPanel {
      * @param username1 name of player 1
      * @param username2 name of player 2
      */
-    public CompBoard(int rows, int cols, int mines, String username1, String username2) {
+    public CompBoard(int rows, int cols, int mines, String username1, String username2, String design) {
         this.rows = rows;
         this.cols = cols;
         this.mines = mines;
@@ -72,6 +77,9 @@ class CompBoard extends JPanel {
         this.username2 = username2;
         this.gameOver = false;
         this.counterRevealedcells = 0;
+
+        //Calls method to switch the design
+        changedesign(design);
         
         // Setup info panel for game with timer and usernames
         topBoardPanel = new JPanel();
@@ -83,7 +91,7 @@ class CompBoard extends JPanel {
         this.timer1 = new Timer(username1, this);
         topBoardPanel.add(usernamLabel1);
         timer1.setBackground(Color.WHITE);
-        timer1.setTimer(120); // Set start time 
+        timer1.setTimer(30); // Set start time 
         topBoardPanel.add(timer1);
 
         // Player 2 setup
@@ -91,7 +99,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(120); // Set start time 
+        timer2.setTimer(30); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -162,6 +170,9 @@ class CompBoard extends JPanel {
                                     }
                                 }
                                 // Normal revealing of cell
+                                if (!isRevealed[row][col]) {
+                                    sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                }
                                 revealCell(row, col);
                                 counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
@@ -173,6 +184,7 @@ class CompBoard extends JPanel {
                             }
                         } else if (SwingUtilities.isRightMouseButton(e)) {
                             if (!gameOver && !isRevealed[row][col]) {
+                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();
@@ -321,6 +333,28 @@ class CompBoard extends JPanel {
     }
 
     /**
+     * Method to change the design of the game
+     * @param design contains the slected design
+     */
+    public void changedesign (String design) {
+        if (design.equals("EM 2024")) {
+            mineicon = new ImageIcon("src/images/emmine.png");
+            flaggeicon = new ImageIcon("src/images/emflagge.png");
+            wontext = "Great Job! A stunishing 7:1 win against Brazil!";
+            loosetext = "Red Card! You were sent off field!";
+        } else if (design.equals("Frankfurt School")) {
+            mineicon = new ImageIcon("src/images/fsmine.png");
+            flaggeicon = new ImageIcon("src/images/fsflagge.png");
+            wontext = "You got the internship!";
+            loosetext = "LOWPERFORMER! IB not possible anymore!";
+        } else {
+            mineicon = new ImageIcon("src/images/mine.png");
+            flaggeicon = new ImageIcon("src/images/flagge.png");
+            
+        }
+    }
+
+    /**
      * Reveal the cell at the specified row and column.
      * 
      * @param row the row of the cell to reveal
@@ -333,6 +367,7 @@ class CompBoard extends JPanel {
         isRevealed[row][col] = true;
         
         if (isMine[row][col]) {
+            sound.playSound("src/Audio/medium-explosion-40472.wav");
             buttons[row][col].setIcon(mineicon);
             if (currentPlayer == 1) {
                 JOptionPane.showMessageDialog(this, username2 + " you lost!");
@@ -452,4 +487,6 @@ class CompBoard extends JPanel {
     public void setCurrentPlayer(int i) {
         this.currentPlayer = i;
     }
+
+
 }
