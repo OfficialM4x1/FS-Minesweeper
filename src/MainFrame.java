@@ -106,6 +106,10 @@ public class MainFrame extends JFrame implements ActionListener {
         //Adding icons to different buttons
         advertisementbutton.setIcon(advertiseicon);
 
+        //Little Icon on the top left bar
+        ImageIcon image = new ImageIcon("src/images/mine.png"); 
+        setIconImage(image.getImage());
+
         //Changing the style of objects in general (e.g. opaque, focusable)
         advertisementbutton.setOpaque(false);
         advertisementbutton.setContentAreaFilled(false);
@@ -178,7 +182,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
         //play background music
         //source for the music https://pixabay.com/de/music/search/free%20songs/
-        music.playMusic("src/Audio/chill-mood-178691.wav");
+        //music.playMusic("src/Audio/chill-mood-178691.wav");
 
         //Here starts the part for the database
         //This part repeats three times, which is due to the fact that SQLite only supports forward only result sets. By choosing another technology stack we would have implemented it "smarter" :)
