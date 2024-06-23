@@ -40,6 +40,7 @@ class Board extends JPanel {
     //Sounds for the game
     AudioClass sound = new AudioClass();
 
+
     //String for the user name and initialization of the timer
     String username;
     JLabel usernamLabel;
@@ -315,6 +316,7 @@ class Board extends JPanel {
         
         // Check if clicked field is a mine 
         if (isMine[row][col]) {
+            sound.playSound("src/Audio/medium-explosion-40472.wav");
             buttons[row][col].setBackground(Color.LIGHT_GRAY);
             buttons[row][col].setIcon(mineicon);
             JOptionPane.showMessageDialog(this, loosetext);

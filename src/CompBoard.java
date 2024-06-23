@@ -367,6 +367,7 @@ class CompBoard extends JPanel {
         isRevealed[row][col] = true;
         
         if (isMine[row][col]) {
+            sound.playSound("src/Audio/medium-explosion-40472.wav");
             buttons[row][col].setIcon(mineicon);
             if (currentPlayer == 1) {
                 JOptionPane.showMessageDialog(this, username2 + " you lost!");
