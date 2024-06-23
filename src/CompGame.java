@@ -142,7 +142,7 @@ public class CompGame extends JFrame {
                                  "\r\n" + //
                                  "This mode combines the familiar gameplay with the thrill of competing against your friends. The objective of every player is to reveal all fields without setting off any explosives. The renowned gameplay and rules of the classic game remain unchanged. However, in the two player mode they were expanded by the following rules:\r\n" + //
                                 "\r\n" + //
-                                "You can alternately click on the fields to reveal them. Moreover the timer is counting backwards, so that both players try to solve the game in the given time. If the time is up or you click on a bomb you loose. For every click that uncovers a field that is not a mine, the current player is granted four seconds more on the timer. But be aware! After 100 feilds are reveiled, the timer counts down twice as fast.\r\n" + //
+                                "You can alternately click on the fields to reveal them. Moreover the timer is counting backwards, so that both players try to solve the game in the given time. If the time is up or you click on a bomb you loose. For every click that uncovers a field that is not a mine, the current player is granted four seconds more on the timer. But be aware! After 100 fields are reveiled, the timer counts down twice as fast.\r\n" + //
                                 "\r\n" + //
                                 "The combination of speed and accuracy is key to defeat your friends and mastering this version of the notorious classic. So, with these guidelines, dive in and enjoy the challenge of the new Minesweeper Competitive Mode!\r\n" + //
                                  "";
