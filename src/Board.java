@@ -218,6 +218,7 @@ class Board extends JPanel {
     public void setusername(String username2) {
         usernamLabel.setText(username2);
         username = username2;
+        System.out.println(username);
     }
 
     /**
@@ -444,5 +445,13 @@ class Board extends JPanel {
      */
     private void colourSquare(int i, int j, boolean revealed) {
         buttons[i][j].setBackground(Color.LIGHT_GRAY);       
+    }
+
+    void stoptimerexternal () {
+        timer.stopTimer();
+    }
+
+    void starttimerexternal () {
+        timer.startTimer();
     }
 }

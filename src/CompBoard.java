@@ -487,6 +487,4 @@ class CompBoard extends JPanel {
     public void setCurrentPlayer(int i) {
         this.currentPlayer = i;
     }
-
-
 }
