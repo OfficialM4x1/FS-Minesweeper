@@ -123,7 +123,9 @@ class Board extends JPanel {
                         if (SwingUtilities.isLeftMouseButton(e)) {
                             // Checks if the game is over and if mine is flagged 
                             if (!gameOver && !isFlaged[row][col]) {
-                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                if (!isRevealed[row][col]) {
+                                    sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                }
                                 revealCell(row, col);
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(Board.this, wontext);
@@ -134,8 +136,8 @@ class Board extends JPanel {
                         }
                         // Ability to flag mines with a right click and deflag 
                         else if (SwingUtilities.isRightMouseButton(e)) {
-                            sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                             if (!gameOver && !isRevealed[row][col]) {
+                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(Board.this, wontext);
                                     gameOver = true;

@@ -165,7 +165,9 @@ class CompBoard extends JPanel {
                                     }
                                 }
                                 // Normal revealing of cell
-                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                if (!isRevealed[row][col]) {
+                                    sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                }
                                 revealCell(row, col);
                                 counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
