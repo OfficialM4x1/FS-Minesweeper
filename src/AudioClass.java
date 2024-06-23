@@ -9,6 +9,7 @@ import java.io.IOException;
 public class AudioClass {
     private Clip clip;
     private boolean playing;
+    private FloatControl volumeControl;
 
     public void playMusic(String soundFilePath) {
         playing = true;
@@ -20,6 +21,8 @@ public class AudioClass {
             // Clip erstellen
             clip = AudioSystem.getClip();
             clip.open(audioStream);
+            volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            setVolume(0.5f);
 
             // Listener hinzufügen, um das Ende des Tracks zu erkennen
             clip.addLineListener(event -> {
@@ -47,6 +50,8 @@ public class AudioClass {
             // Clip erstellen
             clip = AudioSystem.getClip();
             clip.open(audioStream);
+            volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            setVolume(0.7f);
 
             // Sound abspielen
             clip.start();
@@ -60,6 +65,15 @@ public class AudioClass {
         if (clip != null && clip.isRunning()) {
             clip.stop();
             clip.close();
+        }
+    }
+
+    // method to asjust the volume
+    private void setVolume(float volume) {
+        if (volumeControl != null) {
+            float range = volumeControl.getMaximum() - volumeControl.getMinimum();
+            float gain = (range * volume) + volumeControl.getMinimum();
+            volumeControl.setValue(gain);
         }
     }
 }
