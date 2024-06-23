@@ -41,6 +41,9 @@ class CompBoard extends JPanel {
     ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
     ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
 
+    //Sounds for the game
+    AudioClass sound = new AudioClass();
+
     private int currentPlayer;
     private Random random = new Random();
     private int counterRevealedcells;
@@ -91,7 +94,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(20); // Set start time 
+        timer2.setTimer(30); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -162,6 +165,7 @@ class CompBoard extends JPanel {
                                     }
                                 }
                                 // Normal revealing of cell
+                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                                 revealCell(row, col);
                                 counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
@@ -173,6 +177,7 @@ class CompBoard extends JPanel {
                             }
                         } else if (SwingUtilities.isRightMouseButton(e)) {
                             if (!gameOver && !isRevealed[row][col]) {
+                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
                                     timer1.stopTimer();
