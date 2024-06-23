@@ -44,7 +44,7 @@ class CompBoard extends JPanel {
     private int currentPlayer;
     private Random random = new Random();
     private int counterRevealedcells;
-    AudioClass audio = new AudioClass();
+    AudioClass music = new AudioClass();
 
     // Player 1 properties
     private String username1;
@@ -92,7 +92,7 @@ class CompBoard extends JPanel {
         this.timer2 = new Timer(username2, this);
         topBoardPanel.add(usernamLabel2);
         timer2.setBackground(Color.WHITE);
-        timer2.setTimer(30); // Set start time 
+        timer2.setTimer(20); // Set start time 
         topBoardPanel.add(timer2);
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
