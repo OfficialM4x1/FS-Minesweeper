@@ -176,7 +176,7 @@ class CompBoard extends JPanel {
                                 revealCell(row, col);
                                 counterRevealedcells ++;
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                    JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
+                                    JOptionPane.showMessageDialog(CompBoard.this, wontext);
                                     timer1.stopTimer();
                                     timer2.stopTimer();
                                     gameOver = true;
@@ -186,7 +186,7 @@ class CompBoard extends JPanel {
                             if (!gameOver && !isRevealed[row][col]) {
                                 sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
-                                    JOptionPane.showMessageDialog(CompBoard.this, "The game is over: draw");
+                                    JOptionPane.showMessageDialog(CompBoard.this, wontext);
                                     timer1.stopTimer();
                                     timer2.stopTimer();
                                     gameOver = true;
@@ -340,12 +340,12 @@ class CompBoard extends JPanel {
         if (design.equals("EM 2024")) {
             mineicon = new ImageIcon("src/images/emmine.png");
             flaggeicon = new ImageIcon("src/images/emflagge.png");
-            wontext = "Great Job! A stunishing 7:1 win against Brazil!";
+            wontext = "Close call! You made a draw!";
             loosetext = "Red Card! You were sent off field!";
         } else if (design.equals("Frankfurt School")) {
             mineicon = new ImageIcon("src/images/fsmine.png");
             flaggeicon = new ImageIcon("src/images/fsflagge.png");
-            wontext = "You got the internship!";
+            wontext = "WLAN crashed! You will need retake the exam!";
             loosetext = "LOWPERFORMER! IB not possible anymore!";
         } else {
             mineicon = new ImageIcon("src/images/mine.png");
@@ -370,9 +370,9 @@ class CompBoard extends JPanel {
             sound.playSound("src/Audio/medium-explosion-40472.wav");
             buttons[row][col].setIcon(mineicon);
             if (currentPlayer == 1) {
-                JOptionPane.showMessageDialog(this, username2 + " you lost!");
+                JOptionPane.showMessageDialog(this, username2 + " lost! " + loosetext);
             } else {
-                JOptionPane.showMessageDialog(this, username1 + " you lost!");
+                JOptionPane.showMessageDialog(this, username1 + " lost! " + loosetext);
             }
             gameOver = true;
             timer1.stopTimer();
@@ -487,6 +487,4 @@ class CompBoard extends JPanel {
     public void setCurrentPlayer(int i) {
         this.currentPlayer = i;
     }
-
-
 }
