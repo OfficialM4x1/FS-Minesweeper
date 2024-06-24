@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
-
 public class CompGame extends JFrame {
     ImageIcon menuicon = new ImageIcon("src/images/menu.png");
     ImageIcon hinticon = new ImageIcon("src/images/hint.png");
@@ -39,7 +38,6 @@ public class CompGame extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
-        
         JPanel gamePanel = new JPanel();
         gamePanel.setLayout(new BorderLayout()); 
         board = new CompBoard(ROWS, COLS, MINES, nameinput1, nameinput2, design);

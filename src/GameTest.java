@@ -18,21 +18,21 @@ public class GameTest {
 
     @Test
     public void testMenuIconExists() {
-        // Überprüfen, ob das Menü-Icon korrekt geladen wurde.
+        // Check whether the menu icon was loaded correctly.
         assertNotNull(game.menuicon);
         assertNotNull(game.menuicon.getImage());
     }
 
     @Test
     public void testHintIconExists() {
-        // Überprüfen, ob das Hint-Icon korrekt geladen wurde.
+        // Check whether the menu icon was loaded correctly.
         assertNotNull(game.hinticon);
         assertNotNull(game.hinticon.getImage());
     }
 
     @Test
     public void testTutorialIconExists() {
-        // Überprüfen, ob das Tutorial-Icon korrekt geladen wurde.
+        // Check whether the menu icon was loaded correctly.
         assertNotNull(game.tutorialicon);
         assertNotNull(game.tutorialicon.getImage());
     }
