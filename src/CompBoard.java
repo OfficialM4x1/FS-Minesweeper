@@ -17,7 +17,7 @@ import src.Timer;
  */
 class CompBoard extends JPanel {
     
-    //Intilize content game board 
+    //Initiliaize content game board
     protected int rows;
     protected  int cols;
     private int mines;
@@ -63,9 +63,9 @@ class CompBoard extends JPanel {
     /**
      * Constructor for CompBoard class.
      * 
-     * @param rows     number of rows on the game board
-     * @param cols     number of columns on the game board
-     * @param mines    number of mines on the game board
+     * @param rows number of rows on the game board
+     * @param cols number of columns on the game board
+     * @param mines number of mines on the game board
      * @param username1 name of player 1
      * @param username2 name of player 2
      */
@@ -449,6 +449,8 @@ class CompBoard extends JPanel {
 
     /**
      * Reveal all mines on the game board.
+     * This method iterates over the game board and sets the icon and background color
+     * of each button that represents a mine.
      */
     public void revealAllMines() {
         for (int i = 0; i < rows; i++) {
@@ -472,18 +474,23 @@ class CompBoard extends JPanel {
 
     //winning function
 
-    //give row i and coloumn j plus True incase the field is revield (to adjust the colour)
+    //give row i and coloumn j plus True in case the field is revield (to adjust the colour)
         /**
      * Color the square at the specified location.
-     * 
+     * Sets the background color of the button at the given row and column
      * @param i        the row of the square
      * @param j        the column of the square
      * @param revealed true if the cell is revealed, false otherwise
      */
     private void colourSquare(int i, int j, boolean revealed) {
-        buttons[i][j].setBackground(Color.LIGHT_GRAY);       
+        buttons[i][j].setBackground(Color.LIGHT_GRAY);
     }
-    
+    /**
+     * Set the current player.
+     * Updates the current player index.
+     *
+     * @param i the index of the current player
+     */
     public void setCurrentPlayer(int i) {
         this.currentPlayer = i;
     }

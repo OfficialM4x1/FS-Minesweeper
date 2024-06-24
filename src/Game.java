@@ -25,7 +25,8 @@ public class Game extends JFrame {
         setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //how to close the frame 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
+
         //change little icon of window 
         ImageIcon image = new ImageIcon("src/images/mine.png"); //Little Icon on the top left bar
         setIconImage(image.getImage());
