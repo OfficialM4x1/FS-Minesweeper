@@ -40,8 +40,8 @@ class CompBoard extends JPanel {
     ImageIcon sixicon = new ImageIcon("src/images/icon6.png");
     ImageIcon sevenicon = new ImageIcon("src/images/icon7.png");
     ImageIcon eighticon = new ImageIcon("src/images/icon8.png");
-    String wontext = "You won the game!";
-    String loosetext = "Game Over! You clicked on a mine.";
+    String wontext = "The Game is over, you both survied the minefield!";
+    String loosetext = "You clicked on a mine.";
 
     //Sounds for the game
     AudioClass sound = new AudioClass();
@@ -171,7 +171,7 @@ class CompBoard extends JPanel {
                                 }
                                 // Normal revealing of cell
                                 if (!isRevealed[row][col]) {
-                                    sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                    sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav"); //sound for clicking on a field 
                                 }
                                 revealCell(row, col);
                                 counterRevealedcells ++;
@@ -182,9 +182,12 @@ class CompBoard extends JPanel {
                                     gameOver = true;
                                 }
                             }
+                            //right click to flag and unflag a field 
                         } else if (SwingUtilities.isRightMouseButton(e)) {
+                            //check if the game is already over and if the cell is revealed
                             if (!gameOver && !isRevealed[row][col]) {
-                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav");
+                                sound.playSound("src/Audio/big-punch-short-with-male-moan-83735.wav"); //sound for clicking on a field 
+                                //when you flag all mines and revealed all cell the game is over
                                 if (solved(rows, cols) && solvedmines(rows, cols)) {
                                     JOptionPane.showMessageDialog(CompBoard.this, wontext);
                                     timer1.stopTimer();
