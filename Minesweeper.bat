@@ -8,4 +8,5 @@ cd /d %~dp0
 rem Run the JAR file with the necessary classpath and enable preview features
 java --enable-preview -jar FS-Minesweeper.jar
 
+
 endlocal
