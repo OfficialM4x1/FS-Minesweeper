@@ -218,7 +218,6 @@ class Board extends JPanel {
     public void setusername(String username2) {
         usernamLabel.setText(username2);
         username = username2;
-        System.out.println(username);
     }
 
     /**
