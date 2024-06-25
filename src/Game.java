@@ -10,6 +10,7 @@ public class Game extends JFrame {
     ImageIcon hinticon = new ImageIcon("src/images/hint.png");
     ImageIcon tutorialicon = new ImageIcon("src/images/tutorial.png");
     protected Board board;
+    private int countHintIconClicks;
 
     /**
      * The class game, which gets called from the main frame creates the game. The following is the constructor of the game
@@ -19,6 +20,8 @@ public class Game extends JFrame {
      * @param design the design you selected
      */
     public Game(int ROWS, int COLS, int MINES, String design) {
+
+        countHintIconClicks = 0;
 
         //here you can adjust the frame how you like 
         String nameinput = JOptionPane.showInputDialog(board, "Enter your name please:");
@@ -92,7 +95,8 @@ public class Game extends JFrame {
         giveahint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!board.getGameOver()){
+                countHintIconClicks++;
+                if (!board.getGameOver() && countHintIconClicks <=5){
                     if (!board.solved(ROWS, COLS)) {
                         int row = (int)(Math.random() * ROWS);
                         int col = (int)(Math.random() * COLS);
