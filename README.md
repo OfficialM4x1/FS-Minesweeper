@@ -13,8 +13,8 @@ We have completed our Java project and made it accessible via a GitHub repositor
 ### 1. Java Version
 Make sure to have installed at least version 21 of Java.
 
-### 2. IDE
-Ensure that you have installed an IDE which supports Java code.
+### 2. How to start the game 
+If you are a Windows-user please use the Minesweeper.bat file to start the project. For the Mac-users, please use the Minesweeper.sh file to start the project.
 
 ### 3. GitHub Account
 Ensure you have a GitHub account. If you do not have one, you can sign up for free at [GitHub](https://github.com/).

@@ -1,4 +1,4 @@
-//Class generated with the help of ChatGPT
+//Class generated with the help of ChatGPT 
 
 package src;
 

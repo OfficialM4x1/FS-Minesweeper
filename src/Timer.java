@@ -17,17 +17,17 @@ public class Timer extends JPanel {
      * @param username inputted username by the player
      * @param b Competitive board
      */
-    public Timer(String username, CompBoard b) {
+    public Timer(String username, CompBoard b) { 
         timerLabel = new JLabel("00:00");
         add(timerLabel);
         timerActive = true;
         this.timerStep = 1;
 
-        // Timer für das Aktualisieren des Timer-Labels erstellen
+        // timer to update the timer label-- this created with the help of ChatGPT
         timer = new javax.swing.Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //check if timer is active to avoid that the timer is ticking after the game is over
+                //check if timer is active to avoid that the timer is ticking after the game is over -- this part is all hand-made
                 if (timerActive) {
                     //when it is competitive game the timer counts down and shows a msgBox when the timer is 0
                     if (comp) {
@@ -39,7 +39,7 @@ public class Timer extends JPanel {
                             b.setGameOver(true);
                         }
                     }
-                    //normal game the time is just counted 
+                    //normal game the time is just counted -- this was orignally created with GhatGPT
                     else {
                         secondsPassed++;
                     }
@@ -82,7 +82,7 @@ public class Timer extends JPanel {
     }
 
   /**
-   * Method to set the timer
+   * Method to set the timer -- hand-made
    * @param secondsPassed number of seconds at which the starttime will begin
    */
     public void setTimer(int secondsPassed) { //set the starttime in seconds 
@@ -97,7 +97,7 @@ public class Timer extends JPanel {
    /**
     * method for updating the timer label
     */
-    private void updateTimerLabel() {
+    private void updateTimerLabel() { // created with ChatGPT
         int minutes = secondsPassed / 60;
         int seconds = secondsPassed % 60;
         String timeString = String.format("%02d:%02d", minutes, seconds);

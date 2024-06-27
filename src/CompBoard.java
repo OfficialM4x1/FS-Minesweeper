@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 import javax.swing.*;
-import src.Timer;
 
 /**
  * The CompBoard class represents a Minesweeper game board for a competitive game with two players.
