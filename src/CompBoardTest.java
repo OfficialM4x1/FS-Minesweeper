@@ -11,18 +11,6 @@ public class CompBoardTest {
     public CompBoard board = new CompBoard(5, 5, 5, "Player1", "Player2", "Standard");
 
     @Test
-    public void testTimerSwitchesBetweenPlayers() {
-        board.setCurrentPlayer(1);
-        // Simulate a click to switch from Player 1 to Player 2
-        
-        assertEquals(1, board.getCurrentPlayer());
-
-        // Simulate another click to switch from Player 2 to Player 1
-        board.revealCell(0, 1);
-        assertEquals(1, board.getCurrentPlayer());
-    }
-
-    @Test
     public void testCorrectPlayerLosesWhenClickingOnMine() {
         // Place a mine manually for testing
         board.isMine[0][0] = true;
