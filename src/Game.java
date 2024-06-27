@@ -143,9 +143,9 @@ public class Game extends JFrame {
                                 "\r\n" + //
                                 "Picture a grid of squares, some concealing mines and others safe to uncover. Your objective is to reveal all fields of the minefield that are not bombs. You can make a guess by clicking on a field, uncovering either a mine or a number. The latter indicating how many mines lurk in adjacent squares. To mark potential mines, simply right-click to place a flag. This will help you remembering the mines you think you have uncovered. But be cautious! If you hit a mine, the game is over. Success hinges on strategic uncovering - start with less risky areas and progress logically. By analyzing the board and making calculated guesses, you'll gradually unveil the safe squares.\r\n" + //
                                 "\r\n" + //
-                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. So, with these guidelines, dive in and enjoy the challenge of Minesweeper!\r\n" + //
+                                "Practice is key to honing your skills and mastering the art of deduction in this classic game. If you still need help, you can click on the hint button. However, since these are tough times, you only have five jokers. Use them wisely! So, with these guidelines, dive in and enjoy the challenge of Minesweeper!" + //
                                  "";
-            JTextArea textArea = new JTextArea(20, 50);
+            JTextArea textArea = new JTextArea(21, 50);
             JScrollPane scrollPane = new JScrollPane(textArea);
 
             textArea.setText(longMessage);
