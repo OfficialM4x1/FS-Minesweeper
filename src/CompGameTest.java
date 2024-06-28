@@ -1,3 +1,4 @@
+//@author class Lennart Bosse
 package src;
 import org.junit.Test;
 
